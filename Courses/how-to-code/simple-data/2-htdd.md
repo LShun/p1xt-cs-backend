@@ -22,3 +22,8 @@ is equal to
 ```
 
 The second thing that I found useful is that a template does not tell you what things you NEED to use when writing a function definition. However, a template tells you what things you CAN use while writing a function definition.
+
+## HtDF X Structure of Data Orthogonality
+
+From this lecture, I learned that most of the recipes introduced in How to Code: Simple Data are largely orthogonal (which also means independent). This means that I could simply learn about the "How to Design Functions" and "How to Design Data" independently, and get the cross-product for very cheaply.
+
