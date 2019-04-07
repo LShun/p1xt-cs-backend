@@ -45,3 +45,6 @@ However, there are also 3 rules that I learned to simplify conditions. The rules
 2. If all the remaining subclasses are the same type, then we can eliminate all the guards. The same reasoning as point 1 applies.
 3. If the subclass is the last one, the entire condition can be simplified into one `else` statement. Same reasoning as point 1 applies
 
+## HtDF with Interval
+
+This lecture introduces on how to design functions using a custom inverval data type. The most important part is on the tests. When dealing with intervals, it is especially vital to test the endpoints and the midpoints. Besides that, it is also recommended to test variables in between them.
