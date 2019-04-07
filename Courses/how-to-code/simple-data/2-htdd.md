@@ -48,3 +48,17 @@ However, there are also 3 rules that I learned to simplify conditions. The rules
 ## HtDF with Interval
 
 This lecture introduces on how to design functions using a custom inverval data type. The most important part is on the tests. When dealing with intervals, it is especially vital to test the endpoints and the midpoints. Besides that, it is also recommended to test variables in between them.
+
+## HtDF with Enumerations
+
+From this lecture, I learned that for enumerations, it is usually best to have an equal number of test for the number of enumerations. However, there are also cases where there are more number of tests than the number of enumerations when the functions consume more than just enumerations.
+
+Another important point that I learned is that I should bug-check the template by running it first before commenting out and using it to design functions. The reason behind is most template are used for multiple copies of data. Therefore, errors in the template can be replicated multiple times if not caught early.
+
+## HtDF with Itemization
+
+This lecture introduces on how to design functions for itemization type data. At this point, the idea that the recipes are orthogonal (or independent) to each other pretty much shines. I can clearly see how the processes can be seperated.
+
+Another important point is that to test functions consuming data featuring itemizations, it is vital to have test for every subclasses. However, multiple tests for atomic non-distinct values can be omitted where appropriate. For example, a list of integers.
+
+The last point is to be active on debugging. Producing bugs in code is frequent even for the best programmers. It is easier to find 3 bugs seperately than to find them at once.
