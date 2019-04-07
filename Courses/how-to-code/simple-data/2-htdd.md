@@ -27,3 +27,8 @@ The second thing that I found useful is that a template does not tell you what t
 
 From this lecture, I learned that most of the recipes introduced in How to Code: Simple Data are largely orthogonal (which also means independent). This means that I could simply learn about the "How to Design Functions" and "How to Design Data" independently, and get the cross-product for very cheaply.
 
+## Interval
+
+From this lecture, I learned more on how to use the HtDD recipe when dealing with Atomic Non-Distinct data (in precise, the interval type). Besides that, 
+
+I also learned that sometimes, its important to figure out more details from the given data and to introduce them as examples. This especially helps when dealing with more complex data. For example, in a row of seat number, although its not stated, one could figure than the 1st and last seat are aisle seats. Besides that, there is sometimes also an atomic "middle seat" dividing the row into left and right.
