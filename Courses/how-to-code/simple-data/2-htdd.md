@@ -62,3 +62,9 @@ This lecture introduces on how to design functions for itemization type data. At
 Another important point is that to test functions consuming data featuring itemizations, it is vital to have test for every subclasses. However, multiple tests for atomic non-distinct values can be omitted where appropriate. For example, a list of integers.
 
 The last point is to be active on debugging. Producing bugs in code is frequent even for the best programmers. It is easier to find 3 bugs seperately than to find them at once.
+
+## Structure of Information Flows Through
+
+This summary wraps everything up and help me to understand how important it is to understand the information structure, before starting to build a program.
+
+Through this summary, I learned how the information structure and the data structure has a massive influence over the entire program. The information structure gives ideas on how to build a data structure. Once the data structure is set, the template can be built on it. Finally, the tests and the functions will build on the template. This overlay really nails in the concept of "don't start to code immediately" because often, there are faster and better ways to build programs.
