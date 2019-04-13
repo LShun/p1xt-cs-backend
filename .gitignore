@@ -1,0 +1,8 @@
+# Ignores How to Code: Simple Data 
+
+## Problem Bank Files
+*-solution.rkt*
+*-starter.rkt*
+
+## DrRacket backup files
+*.bak
