@@ -21,3 +21,15 @@ In this lecture, I learned how to create a data structure containing a list. I a
 In this lecture, I am exposed on how to use functions to operate on a list through an important idea called *recursion* (recursi-ve writing, okay I'm bad at puns). I learned on how to utilize a template that contains a self-reference to write a recursive function. 
 
 This is the hardest concept I have yet to grasp and gave me incredible amount of headache in Google Code Jam questions, and I'm ready for it!
+
+## Revising the Recipes for Lists
+
+In this lecture, I learned how to actually incorporate lists into my data definitions. Besides that, I also learned why does the data structure with self-reference and the function with recursion works (and not just goes on forever). 
+
+The key ingredient of a successful recursion function requires a self-reference case, which allows it to execute an arbitrary amount of times, and also a base case, which stops the recursion.
+
+Besides that, I also learned that it is best to prepare examples in the form of `check-expect` for the base case first, before touching the other self-referential case. This is because the rest of the self-referential case highly relies on the base case.
+
+Finally, I also learned that sometimes it is vital to just trust things will work. In the recursion function, we do not actually know, for exact that the function will work n-th times. However, the template of the function has natural recursion, and it came from a type with a well-formed self-reference, one can count on the natural recursion to work.
+
+Wew, that was a mouthful! I'm looking forward to the next one, seems like more fun is coming my way.
