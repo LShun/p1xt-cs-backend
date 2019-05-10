@@ -61,11 +61,13 @@ It has a plethora of hints, tips and answers to help you ensure you get the most
   * [x] Q1
   * [ ] Q2
   * [ ] Q3
-* [ ] Course: [How to Code: Simple Data](https://www.edx.org/course/how-code-simple-data-ubcx-htc1x)
-  * [x] In progress 
+* [x] Course: [How to Code: Simple Data](https://www.edx.org/course/how-code-simple-data-ubcx-htc1x)
 * [ ] Project: [Google Code Jam 2010 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
+  * [ ] Skipped due to insufficient time, returning later
 * [ ] Book: [Precalculus](http://www.stitz-zeager.com/szprecalculus07042013.pdf)
+  * [ ] Skipped due to insufficient time, returning later
 * [ ] Course: [How to Code: Complex Data](https://www.edx.org/course/how-code-complex-data-ubcx-htc2x)
+  * [x] In progress
 * [ ] Project: [Google Code Jam 2011 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Project: [Google Code Jam 2008 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Video Series: [Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
