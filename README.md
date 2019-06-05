@@ -66,13 +66,17 @@ It has a plethora of hints, tips and answers to help you ensure you get the most
   * [ ] Skipped due to insufficient time, returning later
 * [ ] Book: [Precalculus](http://www.stitz-zeager.com/szprecalculus07042013.pdf)
   * [ ] Skipped due to insufficient time, returning later
-* [ ] Course: [How to Code: Complex Data](https://www.edx.org/course/how-code-complex-data-ubcx-htc2x)
-  * [x] In progress
+* [x] Course: [How to Code: Complex Data](https://www.edx.org/course/how-code-complex-data-ubcx-htc2x)
 * [ ] Project: [Google Code Jam 2011 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
+  * [ ] Skipped due to insufficient time, returning later
 * [ ] Project: [Google Code Jam 2008 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
+  * [ ] Skipped due to insufficient time, returning later
 * [ ] Video Series: [Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
+  * [ ] Skipped due to insufficient time, returning later
 * [ ] Course: [Single Variable Calculus](https://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/)
+  * [ ] Skipped due to insufficient time, returning later
 * [ ] Book: [Think Java - How to Think Like a Computer Scientist](http://greenteapress.com/wp/think-java/)
+  * [ ] In progress
 * [ ] Project: [Google Code Jam 2009 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Course: [Software Construction: Data Abstraction](https://www.edx.org/course/software-construction-data-abstraction-ubcx-softconst1x)
 * [ ] Project: [Google Code Jam 2010 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
