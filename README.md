@@ -72,11 +72,10 @@ It has a plethora of hints, tips and answers to help you ensure you get the most
 * [ ] Project: [Google Code Jam 2008 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
   * [ ] Skipped due to insufficient time, returning later
 * [ ] Video Series: [Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
-  * [ ] Skipped due to insufficient time, returning later
-* [ ] Course: [Single Variable Calculus](https://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/)
-  * [ ] Skipped due to insufficient time, returning later
+  * [x] In progress
+* [x] Course: [Single Variable Calculus](https://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/)
+  * [x] Replaced with Professor Leonard Calculus 1 videos
 * [ ] Book: [Think Java - How to Think Like a Computer Scientist](http://greenteapress.com/wp/think-java/)
-  * [ ] In progress
 * [ ] Project: [Google Code Jam 2009 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Course: [Software Construction: Data Abstraction](https://www.edx.org/course/software-construction-data-abstraction-ubcx-softconst1x)
 * [ ] Project: [Google Code Jam 2010 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
