@@ -1,0 +1,41 @@
+package Exercises;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JFrame;
+
+public class Moire extends Canvas {
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Moire Pattern");
+        Canvas canvas = new Moire();
+        canvas.setSize(400, 400);
+        canvas.setBackground(Color.white);
+        frame.add(canvas);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    public void paint(Graphics g) {
+//        circular(g);
+        radial(g);
+    }
+
+    private void circular(Graphics g) {
+        int i = 90;
+        while (i < getWidth()) {
+            g.drawOval((getWidth() - i) / 2, (getHeight() - i) / 2, i, i);
+            i = i + 3;
+        }
+    }
+
+    public void radial(Graphics g) {
+        int i = 0;
+        while (i <= 400) {
+            g.drawLine(i, 0, getWidth() - i, getHeight());
+            g.drawLine(0, i, getWidth(), getHeight() - i);
+            i += 10;
+        }
+    }
+}

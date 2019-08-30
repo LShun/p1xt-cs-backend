@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://books.trinket.io/thinkjava2/chapter13.html -->
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta class="foundation-mq-small"><meta class="foundation-mq-small-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-large"><meta class="foundation-mq-large-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xxlarge"><meta class="foundation-data-attribute-namespace"><style class="anchorjs"></style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  
+  
+  <title>Objects of arrays | Think Java | Trinket</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+  <link rel="icon" href="https://books.trinket.io/img/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-precomposed.png">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Objects of arrays _ Think Java _ Trinket_files/github.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Objects of arrays _ Think Java _ Trinket_files/font-awesome.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Objects of arrays _ Think Java _ Trinket_files/video-js.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Objects of arrays _ Think Java _ Trinket_files/base.css">
+  
+  
+
+  <script async="" src="./Objects of arrays _ Think Java _ Trinket_files/fbevents.js.download"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
+    trinket = {
+      config : {
+        apphostname    : 'trinket.io',
+        usersubdomains : true,
+        protocol       : 'https',
+        addthisurl     : '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5344021135dae100',
+        cachePrefix    : 'cache-prefix-',
+        prefixes       : {"components":"cache-prefix-b8de66a3","js":"cache-prefix-5340c6b8","css":"cache-prefix-5340c6b8","img":"cache-prefix-5340c6b8","fonts":"cache-prefix-5340c6b8","partials":"cache-prefix-5340c6b8","skulpt":"321e8852","pypyjs":"cache-prefix-e8e5bcf1"},
+        components     : {"ace-builds":"v1.2.6.1rc2","anchor-js":"2.0.0","angular-file-saver":"1.1.3","angular-load":"0.1.2","angular-notifyjs":"0.1.0","angular-ui-router":"0.2.11","angular-ui-tree":"2.0.10","angular-ui-utils":"0.1.1","angular-xeditable":"0.1.8","bluebird":"3.5.1","d3":"3.4.11","filereader":"107f68c3b9","file-saver.js":"1.20150507.2","font-mfizz":"2.0.1","gsap":"1.15.0","jquery-ui":"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1","jsdiff":"1.0.8","jszip":"3.1.4","lazysizes":"1.5.0","lodash":"2.4.1","modernizr":"2.7.2","ng-file-upload":"1.2.6","ngInfiniteScroll":"1.1.2","notifyjs":"0.4.2","opal":"0.6.2","restangular":"1.3.1","speakingurl":"1.1.5","video.js":"5.20.4","yamljs":"0.1.5"},
+        vendorHost     : 'https://trinket-vendor-assets.trinket.io',
+        trinketTypes   : [
+          { lang : 'python',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Python'                                     },
+          { lang : 'python3',    image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Python3', icon : 'trinket-key logo premium' },
+          { lang : 'pygame',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Pygame', icon : 'trinket-key logo premium' },
+          { lang : 'java',       image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/java.png',       label : 'Java',    icon : 'trinket-key logo premium' },
+          { lang : 'R',          image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/R.png',          label : 'R',       icon : 'trinket-key logo premium' },
+          { lang : 'blocks',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/blocks.png',     label : 'Blocks'                                     },
+          { lang : 'html',       image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/html.png',       label : 'HTML'                                       },
+          { lang : 'glowscript', image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/glowscript.png', label : 'GlowScript'                                 },
+          { lang : 'music',      image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/music.png',      label : 'Music'                                      }
+        ],
+        autorun           : ["python","glowscript","blocks","python3","java","glowscript-blocks","R"],
+        outputOnly        : ["python","html","glowscript","blocks","python3","pygame","java","glowscript-blocks","R"],
+        toggleCode        : ["python","html","glowscript","blocks","python3","pygame","java","glowscript-blocks","R"],
+        downloadable      : ["python","html","python3","pygame","java","blocks","glowscript-blocks","R","pygame"],
+        uploadable        : ["blocks","glowscript-blocks"],
+        hideGeneratedCode : ["blocks","glowscript-blocks"],
+        runOption         : {"python":["run","console"],"python3":["run","console"],"R":["run","console"]},
+        plans             : [{ "connect"  : "Connect"  },
+                             { "codeplus" : "Code+" }]
+      }
+    };
+  </script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/modernizr.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/lodash.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/jquery.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/angular.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/trinket.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/trinket-config.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/trinket-roles.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/template.js.download"></script>
+  
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46899028-1', 'trinket.io');
+  
+  ga('set', 'dimension2', 'trinket');
+  
+  ga('send', 'pageview');
+
+  
+
+</script>
+
+  
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1441353372787187'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1441353372787187&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+  
+
+
+  
+<style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style></style><style type="text/css" id="notify-bootstrap">.notifyjs-bootstrap-base {
+	font-weight: bold;
+	padding: 8px 15px 8px 14px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	white-space: nowrap;
+	padding-left: 25px;
+	background-repeat: no-repeat;
+	background-position: 3px 7px;
+}
+.notifyjs-bootstrap-error {
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border-color: #EED3D7;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAtRJREFUeNqkVc1u00AQHq+dOD+0poIQfkIjalW0SEGqRMuRnHos3DjwAH0ArlyQeANOOSMeAA5VjyBxKBQhgSpVUKKQNGloFdw4cWw2jtfMOna6JOUArDTazXi/b3dm55socPqQhFka++aHBsI8GsopRJERNFlY88FCEk9Yiwf8RhgRyaHFQpPHCDmZG5oX2ui2yilkcTT1AcDsbYC1NMAyOi7zTX2Agx7A9luAl88BauiiQ/cJaZQfIpAlngDcvZZMrl8vFPK5+XktrWlx3/ehZ5r9+t6e+WVnp1pxnNIjgBe4/6dAysQc8dsmHwPcW9C0h3fW1hans1ltwJhy0GxK7XZbUlMp5Ww2eyan6+ft/f2FAqXGK4CvQk5HueFz7D6GOZtIrK+srupdx1GRBBqNBtzc2AiMr7nPplRdKhb1q6q6zjFhrklEFOUutoQ50xcX86ZlqaZpQrfbBdu2R6/G19zX6XSgh6RX5ubyHCM8nqSID6ICrGiZjGYYxojEsiw4PDwMSL5VKsC8Yf4VRYFzMzMaxwjlJSlCyAQ9l0CW44PBADzXhe7xMdi9HtTrdYjFYkDQL0cn4Xdq2/EAE+InCnvADTf2eah4Sx9vExQjkqXT6aAERICMewd/UAp/IeYANM2joxt+q5VI+ieq2i0Wg3l6DNzHwTERPgo1ko7XBXj3vdlsT2F+UuhIhYkp7u7CarkcrFOCtR3H5JiwbAIeImjT/YQKKBtGjRFCU5IUgFRe7fF4cCNVIPMYo3VKqxwjyNAXNepuopyqnld602qVsfRpEkkz+GFL1wPj6ySXBpJtWVa5xlhpcyhBNwpZHmtX8AGgfIExo0ZpzkWVTBGiXCSEaHh62/PoR0p/vHaczxXGnj4bSo+G78lELU80h1uogBwWLf5YlsPmgDEd4M236xjm+8nm4IuE/9u+/PH2JXZfbwz4zw1WbO+SQPpXfwG/BBgAhCNZiSb/pOQAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-success {
+	color: #468847;
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+}
+.notifyjs-bootstrap-info {
+	color: #3A87AD;
+	background-color: #D9EDF7;
+	border-color: #BCE8F1;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QYFAhkSsdes/QAAA8dJREFUOMvVlGtMW2UYx//POaWHXg6lLaW0ypAtw1UCgbniNOLcVOLmAjHZolOYlxmTGXVZdAnRfXQm+7SoU4mXaOaiZsEpC9FkiQs6Z6bdCnNYruM6KNBw6YWewzl9z+sHImEWv+vz7XmT95f/+3/+7wP814v+efDOV3/SoX3lHAA+6ODeUFfMfjOWMADgdk+eEKz0pF7aQdMAcOKLLjrcVMVX3xdWN29/GhYP7SvnP0cWfS8caSkfHZsPE9Fgnt02JNutQ0QYHB2dDz9/pKX8QjjuO9xUxd/66HdxTeCHZ3rojQObGQBcuNjfplkD3b19Y/6MrimSaKgSMmpGU5WevmE/swa6Oy73tQHA0Rdr2Mmv/6A1n9w9suQ7097Z9lM4FlTgTDrzZTu4StXVfpiI48rVcUDM5cmEksrFnHxfpTtU/3BFQzCQF/2bYVoNbH7zmItbSoMj40JSzmMyX5qDvriA7QdrIIpA+3cdsMpu0nXI8cV0MtKXCPZev+gCEM1S2NHPvWfP/hL+7FSr3+0p5RBEyhEN5JCKYr8XnASMT0xBNyzQGQeI8fjsGD39RMPk7se2bd5ZtTyoFYXftF6y37gx7NeUtJJOTFlAHDZLDuILU3j3+H5oOrD3yWbIztugaAzgnBKJuBLpGfQrS8wO4FZgV+c1IxaLgWVU0tMLEETCos4xMzEIv9cJXQcyagIwigDGwJgOAtHAwAhisQUjy0ORGERiELgG4iakkzo4MYAxcM5hAMi1WWG1yYCJIcMUaBkVRLdGeSU2995TLWzcUAzONJ7J6FBVBYIggMzmFbvdBV44Corg8vjhzC+EJEl8U1kJtgYrhCzgc/vvTwXKSib1paRFVRVORDAJAsw5FuTaJEhWM2SHB3mOAlhkNxwuLzeJsGwqWzf5TFNdKgtY5qHp6ZFf67Y/sAVadCaVY5YACDDb3Oi4NIjLnWMw2QthCBIsVhsUTU9tvXsjeq9+X1d75/KEs4LNOfcdf/+HthMnvwxOD0wmHaXr7ZItn2wuH2SnBzbZAbPJwpPx+VQuzcm7dgRCB57a1uBzUDRL4bfnI0RE0eaXd9W89mpjqHZnUI5Hh2l2dkZZUhOqpi2qSmpOmZ64Tuu9qlz/SEXo6MEHa3wOip46F1n7633eekV8ds8Wxjn37Wl63VVa+ej5oeEZ/82ZBETJjpJ1Rbij2D3Z/1trXUvLsblCK0XfOx0SX2kMsn9dX+d+7Kf6h8o4AIykuffjT8L20LU+w4AZd5VvEPY+XpWqLV327HR7DzXuDnD8r+ovkBehJ8i+y8YAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-warn {
+	color: #C09853;
+	background-color: #FCF8E3;
+	border-color: #FBEED5;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABJlBMVEXr6eb/2oD/wi7/xjr/0mP/ykf/tQD/vBj/3o7/uQ//vyL/twebhgD/4pzX1K3z8e349vK6tHCilCWbiQymn0jGworr6dXQza3HxcKkn1vWvV/5uRfk4dXZ1bD18+/52YebiAmyr5S9mhCzrWq5t6ufjRH54aLs0oS+qD751XqPhAybhwXsujG3sm+Zk0PTwG6Shg+PhhObhwOPgQL4zV2nlyrf27uLfgCPhRHu7OmLgAafkyiWkD3l49ibiAfTs0C+lgCniwD4sgDJxqOilzDWowWFfAH08uebig6qpFHBvH/aw26FfQTQzsvy8OyEfz20r3jAvaKbhgG9q0nc2LbZxXanoUu/u5WSggCtp1anpJKdmFz/zlX/1nGJiYmuq5Dx7+sAAADoPUZSAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfdBgUBGhh4aah5AAAAlklEQVQY02NgoBIIE8EUcwn1FkIXM1Tj5dDUQhPU502Mi7XXQxGz5uVIjGOJUUUW81HnYEyMi2HVcUOICQZzMMYmxrEyMylJwgUt5BljWRLjmJm4pI1hYp5SQLGYxDgmLnZOVxuooClIDKgXKMbN5ggV1ACLJcaBxNgcoiGCBiZwdWxOETBDrTyEFey0jYJ4eHjMGWgEAIpRFRCUt08qAAAAAElFTkSuQmCC);
+}
+</style><meta class="foundation-mq-topbar"><meta class="foundation-mq-topbar"><meta class="foundation-mq-small"><meta class="foundation-mq-medium"><meta class="foundation-mq-large"><style type="text/css" id="core-notify">.notifyjs-corner {
+	position: fixed;
+	margin: 5px;
+	z-index: 1050;
+}
+
+.notifyjs-corner .notifyjs-wrapper,
+.notifyjs-corner .notifyjs-container {
+	position: relative;
+	display: block;
+	height: inherit;
+	width: inherit;
+	margin: 3px;
+}
+
+.notifyjs-wrapper {
+	z-index: 1;
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+.notifyjs-container {
+	display: none;
+	z-index: 1;
+	position: absolute;
+}
+
+.notifyjs-hidable {
+	cursor: pointer;
+}
+
+[data-notify-text],[data-notify-html] {
+	position: relative;
+}
+
+.notifyjs-arrow {
+	position: absolute;
+	z-index: 2;
+	width: 0;
+	height: 0;
+}</style></head>
+<body ng-app="trinket.main" id="think-java" class="loggedin  ng-scope">
+
+  
+
+  <!-- for positioning footer at bottom of screen on short pages -->
+  <div class="main-content-wrapper">
+
+  <input id="whoami" type="hidden" value="ghirda">
+  
+  
+    <div class="nav-wrapper">
+      <nav class="top-bar" data-topbar="" data-options="is_hover: false" role="navigation" aria-label="Main Navigation">
+        <ul class="title-area">
+          <li class="name">
+            <a href="https://trinket.io/" role="button" aria-label="Index Page">
+              <img src="./Objects of arrays _ Think Java _ Trinket_files/trinket-logo.png" alt="Trinket helps you teach with code">
+            </a>
+            
+              
+              <a href="https://books.trinket.io/plans"><span class="radius code-label">Code</span></a>
+              
+            
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="https://books.trinket.io/thinkjava2/chapter13.html#"><span></span></a></li>
+        </ul>
+        
+      <section class="top-bar-section">
+          
+          <ul>
+            <li><a href="https://trinket.io/home" aria-label="Go Home"><i class="fa fa-home"></i> Home </a>
+          </li></ul>
+          
+          <ul class="right">
+            
+            <li><a href="https://trinket.io/plans"><i class="fa fa-star"></i> <span><span class="show-for-large-up">Plans</span></span></a></li>
+            <li><a href="https://hourofpython.com/"><i class="fa fa-graduation-cap"></i> <span><span class="show-for-large-up">Learn</span></span></a></li>
+            <li><a href="https://trinket.io/help"><i class="fa fa-question-circle"></i> <span><span class="show-for-large-up">Help</span></span></a></li>
+            
+            
+              <li class="has-dropdown" role="navigation">
+                <a class="dropdown-btn" role="button" aria-controls="user_dropdown" aria-label="Open User Menu">
+                  <img id="nav-user-avatar" src="./Objects of arrays _ Think Java _ Trinket_files/avatar-default.png" alt="Photo of ghirda" class="avatar">
+                  <span id="userdata" data-user-id="5d1c8055bf396f8f5ae05dc5">ghirda</span>
+                </a>
+                <ul id="user_dropdown" class="dropdown" role="menu" aria-label="User Menu"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+                  <li role="menuitem">
+                    <a href="https://trinket.io/home">
+                      <i class="fa fa-home"></i> Home
+                    </a>
+                  </li>
+                  <li class="divider" role="presentation"></li>
+                  <li role="menuitem">
+                    <a href="https://trinket.io/library/trinkets">
+                      My Trinkets
+                    </a>
+                  </li>
+                  <li class="has-dropdown" role="menuitem">
+                    <a role="button" aria-controls="new_trinket_list">New Trinket</a>
+                    <ul id="new_trinket_list" class="dropdown" role="group"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=python"><i class="lang-sprite lang-sprite-python"></i> Python</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=python3"><i class="lang-sprite lang-sprite-python"></i> Python3 <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=pygame"><i class="lang-sprite lang-sprite-pygame"></i> Pygame <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=R"><i class="lang-sprite lang-sprite-R"></i> R <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=blocks"><i class="lang-sprite lang-sprite-blocks"></i> Blocks</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=html"><i class="lang-sprite lang-sprite-html"></i> HTML</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=glowscript"><i class="lang-sprite lang-sprite-glowscript"></i> GlowScript</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=java"><i class="lang-sprite lang-sprite-java"></i> Java <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=music"><i class="lang-sprite lang-sprite-music"></i> Music</a></li>
+                    </ul>
+                  </li>
+                  <li class="divider" role="presentation"></li>
+                  <li><a href="https://trinket.io/account"><i class="fa fa-gear"></i> My Settings</a></li>
+                  
+                  <li class="divider" role="presentation"></li>
+                  <li><a href="https://trinket.io/help">Help</a></li>
+                  <li><a href="https://trinket.io/contact">Contact Us</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="https://trinket.io/logout">
+                  <i class="fa fa-sign-out"></i> Sign Out
+                </a>
+              </li>
+            
+          </ul>
+        </section></nav>
+    </div>
+  
+
+  
+  
+  
+
+  <section id="main-content" role="main">
+    
+<div class="booktoc contain-to-grid sticky">
+  <nav class="top-bar" data-topbar="" role="navigation">
+
+
+    <ul class="title-area">
+        <li class="name">
+          <h1><a href="https://books.trinket.io/thinkjava2/index.html">Think Java 2<span class="draft-label label round">Draft</span></a> </h1>
+        </li>
+        <li class="toggle-topbar"><a href="https://books.trinket.io/thinkjava2/chapter13.html"><span>Menu</span></a></li>
+
+      </ul>
+
+
+  
+  
+<section class="top-bar-section">
+    <ul class="left books-back-button">
+      <li>
+        <a href="https://books.trinket.io/">
+          <i class="fa fa-angle-left"></i> All Textbooks
+        </a>
+      </li>
+    </ul>
+  </section><section class="top-bar-section">
+
+
+    <ul class="left">
+        <li class="has-dropdown not-click">
+          <a href="https://books.trinket.io/thinkjava2/chapter13.html#">Chapters</a>
+          <ul class="dropdown">
+            <li><a href="https://books.trinket.io/thinkjava2/index.html">See All Chapters</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/preface.html">Preface</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter1.html">Chapter 1: Computer programming</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter2.html">Chapter 2: Variables and Operators</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter3.html">Chapter 3: Input and Output</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter4.html">Chapter 4: Methods and Testing</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter5.html">Chapter 5: Conditionals and Logic</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter6.html">Chapter 6: Loops and Strings</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter7.html">Chapter 7: Arrays and References</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter8.html">Chapter 8: Recursive Methods</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter9.html">Chapter 9: Immutable Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter10.html">Chapter 10: Mutable Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter11.html">Chapter 11: Designing Classes</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter12.html">Chapter 12: Arrays of Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter13.html">Chapter 13: Objects of Arrays</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter14.html">Chapter 14: Extending Classes</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-a.html">Appendix A: Tools</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-b.html">Appendix B: Javadoc</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-c.html">Appendix C: Graphics</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-d.html">Appendix D: Debugging</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-e.html">Appendix E: Extras</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/book-index.html">Index</a></li>
+          </ul>
+        </li>
+    </ul>
+
+
+
+<ul class="right"><li class="has-dropdown not-click"><a href="https://books.trinket.io/thinkjava2/chapter13.html">Objects of arrays</a>
+<ul class="dropdown">
+<li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec151">Decks of cards</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec152">Shuffling decks</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec153">Selection sort</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec154">Merge sort</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec155">Subdecks</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec156">Merging decks</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec157">Adding recursion</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec158">Static context</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec159">Piles of cards</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec160">Vocabulary</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter13.html#sec161">Exercises</a>
+</li></ul>
+</li></ul>
+
+
+  </section></nav></div>
+
+<div class="bookchapter">
+
+
+<div class="row">
+<div class="columns small-12">
+
+
+      <div class="row">
+        <div class="columns small-12"><h1 id="sec150" class="chapter">Chapter&nbsp;13&nbsp;&nbsp;Objects of arrays</h1>
+<p><a id="item744"></a></p><p>In the previous chapter, we defined a class to represent cards and used an array of <code>Card</code> objects to represent a deck.
+In this chapter, we take another step toward object-oriented programming by defining a class to represent a deck of cards.
+We then present algorithms for shuffling and sorting decks.
+Finally, we introduce <code>ArrayList</code> from the Java library and use it to keep track of different piles of cards from the deck.</p>
+<h2 id="sec151" class="section">13.1&nbsp;&nbsp;Decks of cards<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec151" aria-label="Anchor link for: sec151" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>
+<a id="deck"></a></p><p><a id="item745"></a>
+<a id="item746"></a></p><p>The first goal of this chapter is to create a <code>Deck</code> class that encapsulates an array of <code>Card</code>s.
+The initial class definition looks like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public class</span> Deck {
+    <span style="color:blue">private</span> Card[] cards;
+
+    <span style="color:blue">public</span> Deck(<span style="color:blue">int</span> n) {
+        <span style="color:blue">this</span>.cards = <span style="color:blue">new</span> Card[n];
+    }
+
+    <span style="color:blue">public</span> Card[] getCards() {
+        <span style="color:blue">return this</span>.cards;
+    }
+}</td></tr>
+</tbody></table><p><a id="item747"></a>
+<a id="item748"></a>
+<a id="item749"></a></p><p>The constructor initializes the instance variable with an array of <code>n</code> cards, but it doesn’t create any <code>Card</code> objects.
+Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter13.html#fig.deckobject">13.1</a> shows what a <code>Deck</code> looks like with no cards.</p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Objects of arrays _ Think Java _ Trinket_files/thinkjava7039.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 13.1: Memory diagram of an unpopulated <code>Deck</code> object.</td></tr>
+</tbody></table></div>
+<a id="fig.deckobject"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p>We’ll add another constructor that creates a standard 52-card array and populates it with <code>Card</code> objects:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Deck() {
+    <span style="color:blue">this</span>.cards = <span style="color:blue">new</span> Card[52];
+    <span style="color:blue">int</span> index = 0;
+    <span style="color:blue">for</span> (<span style="color:blue">int</span> suit = 0; suit &lt;= 3; suit++) {
+        <span style="color:blue">for</span> (<span style="color:blue">int</span> rank = 1; rank &lt;= 13; rank++) {
+            <span style="color:blue">this</span>.cards[index] = <span style="color:blue">new</span> Card(rank, suit);
+            index++;
+        }
+    }
+}</td></tr>
+</tbody></table><p>This method is similar to the example in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter12.html#cardarray">12.6</a>; we just turned it into a constructor.
+We can now create a standard <code>Deck</code> like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Deck deck = <span style="color:blue">new</span> Deck();</td></tr>
+</tbody></table><p><a id="item750"></a></p><p>Now that we have a <code>Deck</code> class, we have a logical place to put methods that pertain to decks.
+Looking at the methods we have written so far, one obvious candidate is <code>printDeck</code> from Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter12.html#cardarray">12.6</a>.
+</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public void</span> print() {
+    <span style="color:blue">for</span> (Card card : <span style="color:blue">this</span>.cards) {
+        System.out.println(card);
+    }
+}</td></tr>
+</tbody></table><p>Notice that when we transform a static method into an instance method, the code is shorter.
+We can simply type <code>deck.print()</code> to invoke this method.</p>
+<h2 id="sec152" class="section">13.2&nbsp;&nbsp;Shuffling decks<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec152" aria-label="Anchor link for: sec152" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>
+<a id="shuffle"></a></p><p><a id="item751"></a></p><p>For most card games, you need to be able to shuffle the deck; that is, put the cards in a random order.
+In Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter7.html#random">7.6</a> we saw how to generate random numbers, but it is not obvious how to use them to shuffle a deck.</p><p>One possibility is to model the way humans shuffle, which is usually dividing the deck in two halves and then choosing alternately from each one.
+Since humans usually don’t shuffle perfectly, after about seven iterations the order of the deck is pretty well randomized.</p><p>But a computer program would have the annoying property of doing a perfect shuffle every time, which is not very random.
+In fact, after eight perfect shuffles, you would find the deck back in the order you started in!
+For more on this, see <a href="https://en.wikipedia.org/wiki/Faro_shuffle"><span style="font-family:monospace">https://en.wikipedia.org/wiki/Faro_shuffle</span></a>.</p><p><a id="item752"></a></p><p>A better shuffling algorithm is to traverse the deck one card at a time, and at each iteration, choose two cards and swap them.
+To sketch an outline of how this algorithm works, we will use a combination of Java statements and English comments.
+This technique is sometimes called <span style="font-weight:bold">pseudocode</span>.</p><p><a id="item753"></a></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public void</span> shuffle() {
+    <span style="color:blue">for</span> each index i {
+        <span style="color:#007C00">// choose a random number between i and length - 1
+        // swap the ith card and the randomly-chosen card</span>
+    }
+}</td></tr>
+</tbody></table><p><a id="item754"></a>
+<a id="item755"></a></p><p>The nice thing about pseudocode is that it often makes clear what other methods you are going to need.
+In this case, we need a method that chooses a random integer between <code>low</code> and <code>high</code>, and a method that takes two indexes and swaps the cards at those positions.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">private static int</span> randomInt(<span style="color:blue">int</span> low, <span style="color:blue">int</span> high) {
+    <span style="color:#007C00">// return a random number between low and high</span>
+}
+
+<span style="color:blue">private void</span> swapCards(<span style="color:blue">int</span> i, <span style="color:blue">int</span> j) {
+    <span style="color:#007C00">// swap the ith and the jth cards in the array</span>
+}</td></tr>
+</tbody></table><p><a id="item756"></a>
+<a id="item757"></a></p><p>Methods like <code>randomInt</code> and <code>swapCards</code> are called <span style="font-weight:bold">helper methods</span>, because they help you solve parts of the problem.
+Helper methods are often <code><span style="color:blue">private</span></code>, since they are specific to the internal algorithms of the class.</p><p><a id="item758"></a>
+<a id="item759"></a></p><p>This process of writing pseudocode first and then writing helper methods to make it work is called <span style="font-weight:bold">top-down design</span> (see <a href="https://en.wikipedia.org/wiki/Top-down_and_bottom-up_design"><span style="font-family:monospace">https://en.wikipedia.org/wiki/Top-down_and_bottom-up_design</span></a>).
+It is similar to “incremental development” and “encapsulation and generalization”, the other design processes you have seen in this book.</p><p>One of the exercises at the end of the chapter asks you to write the helper methods <code>randomInt</code> and <code>swapCards</code>, and use them to implement <code>shuffle</code>.</p>
+<h2 id="sec153" class="section">13.3&nbsp;&nbsp;Selection sort<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec153" aria-label="Anchor link for: sec153" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>
+<a id="sorting"></a></p><p><a id="item760"></a>
+<a id="item761"></a></p><p>Now that we have shuffled the deck, we need a way to put it back in order.
+There is an algorithm for sorting that is ironically similar to the algorithm for shuffling.
+It’s called <span style="font-weight:bold">selection sort</span>, because it works by traversing the array repeatedly and selecting the lowest (or highest) remaining card each time.</p><p>During the first iteration, we find the lowest card and swap it with the card in the 0th position.
+During the <span style="font-style:italic">i</span>th iteration, we find the lowest card to the right of <span style="font-style:italic">i</span> and swap it with the <span style="font-style:italic">i</span>th card.
+</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public void</span> selectionSort() {
+    <span style="color:blue">for</span> each index i {
+        <span style="color:#007C00">// find the lowest card at or to the right of i
+        // swap the ith card and the lowest card found</span>
+    }
+}</td></tr>
+</tbody></table><p>Again, the pseudocode helps with the design of the helper methods.
+For this algorithm we can use <code>swapCards</code> from before, so we only need a method to find the lowest card; we’ll call it <code>indexLowest</code>.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">private int</span> indexLowest(<span style="color:blue">int</span> low, <span style="color:blue">int</span> high) {
+    <span style="color:#007C00">// find the lowest card between low and high</span>
+}</td></tr>
+</tbody></table><p>One of the exercises at the end of the chapter asks you to write <code>indexLowest</code>, and then use it and <code>swapCards</code> to implement <code>selectionSort</code>.</p>
+<h2 id="sec154" class="section">13.4&nbsp;&nbsp;Merge sort<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec154" aria-label="Anchor link for: sec154" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>
+<a id="mergesort"></a></p><p><a id="item762"></a></p><p>Selection sort is a simple algorithm, but it is not very efficient.
+To sort <span style="font-style:italic">n</span> items, it has to traverse the array <span style="font-style:italic">n</span>−1 times.
+Each traversal takes an amount of time proportional to <span style="font-style:italic">n</span>.
+The total time, therefore, is proportional to <span style="font-style:italic">n</span><sup>2</sup>.</p><p><a id="item763"></a>
+<a id="item764"></a></p><p>We will develop a more efficient algorithm called <span style="font-weight:bold">merge sort</span>.
+To sort <span style="font-style:italic">n</span> items, merge sort takes time proportional to <span style="font-style:italic">n</span> log<sub>2</sub> <span style="font-style:italic">n</span>.
+That may not seem impressive, but as <span style="font-style:italic">n</span> gets big, the difference between <span style="font-style:italic">n</span><sup>2</sup> and <span style="font-style:italic">n</span> log<sub>2</sub> <span style="font-style:italic">n</span> can be enormous.</p><p>For example, log<sub>2</sub> of one million is around 20.
+So if you had to sort a million numbers, merge sort would require 20 million steps.
+But selection sort would require one trillion steps!</p><p>The idea behind merge sort is this: if you have two subdecks, each of which has already been sorted, you can quickly merge them into a single, sorted deck.
+Try this out with a deck of cards:</p><ol class="enumerate" type="1"><li class="li-enumerate">Form two subdecks with about 10 cards each, and sort them so that when they are face up the lowest cards are on top.
+Place both decks face up in front of you.</li><li class="li-enumerate">Compare the top card from each deck and choose the lower one.
+Flip it over and add it to the merged deck.</li><li class="li-enumerate">Repeat step 2 until one of the decks is empty.
+Then take the remaining cards and add them to the merged deck.</li></ol><p>The result should be a single sorted deck.
+In the next few sections, we’ll explain how to implement this algorithm in Java.</p>
+<h2 id="sec155" class="section">13.5&nbsp;&nbsp;Subdecks<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec155" aria-label="Anchor link for: sec155" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item765"></a></p><p>The first step of merge sort is to split the deck into two subdecks, each with about half of the cards.
+So we need to write a method, <code>subdeck</code>, that takes a deck and a range of indexes.
+It returns a new deck that contains the specified subset of the cards.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Deck subdeck(<span style="color:blue">int</span> low, <span style="color:blue">int</span> high) {
+    Deck sub = <span style="color:blue">new</span> Deck(high - low + 1);
+    <span style="color:blue">for</span> (<span style="color:blue">int</span> i = 0; i &lt; sub.cards.length; i++) {
+        sub.cards[i] = <span style="color:blue">this</span>.cards[low + i];
+    }
+    <span style="color:blue">return</span> sub;
+}</td></tr>
+</tbody></table><p>The first line creates an unpopulated subdeck (an array of <code><span style="color:blue">null</span></code> references).
+Inside the <code><span style="color:blue">for</span></code> loop, the subdeck gets populated with references in the deck.</p><p><a id="item766"></a></p><p>The length of the subdeck is <code>high&nbsp;-&nbsp;low&nbsp;+&nbsp;1</code>, because both the low card and the high card are included.
+This sort of computation can be confusing, and forgetting the “<code>+&nbsp;1</code>” often leads to <span style="font-weight:bold">off-by-one</span> errors.
+Drawing a picture is usually the best way to avoid them.</p><p><a id="item767"></a>
+<a id="item768"></a></p><p>Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter13.html#fig.subdeck">13.2</a> is a memory diagram of a subdeck with <code>low&nbsp;=&nbsp;0</code> and <code>high&nbsp;=&nbsp;4</code>.
+The result is a hand with five cards that are <em>shared</em> with the original deck; that is, they are aliased.</p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Objects of arrays _ Think Java _ Trinket_files/thinkjava7040.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 13.2: Memory diagram showing the effect of <code>subdeck</code>.</td></tr>
+</tbody></table></div>
+<a id="fig.subdeck"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p><a id="item769"></a>
+<a id="item770"></a></p><p>Aliasing might not be a good idea, because changes to shared cards would be reflected in multiple decks.
+But since <code>Card</code> objects are immutable, this kind of aliasing is not a problem at all.
+It also saves a lot of memory, because we never have to create duplicate <code>Card</code> objects.</p>
+<h2 id="sec156" class="section">13.6&nbsp;&nbsp;Merging decks<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec156" aria-label="Anchor link for: sec156" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item771"></a></p><p>The next helper method we need is <code>merge</code>, which takes two sorted subdecks and returns a new deck containing all cards from both decks, in order.
+Here’s what the algorithm looks like in pseudocode, assuming the subdecks are named <code>d1</code> and <code>d2</code>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">private static</span> Deck merge(Deck d1, Deck d2) {
+    <span style="color:#007C00">// create a new deck big enough for all the cards
+
+    // use the index i to keep track of where we are at in
+    // the first deck, and the index j for the second deck</span>
+    <span style="color:blue">int</span> i = 0;
+    <span style="color:blue">int</span> j = 0;
+
+    <span style="color:#007C00">// the index k traverses the result deck</span>
+    <span style="color:blue">for</span> (<span style="color:blue">int</span> k = 0; k &lt; d3.length; k++) {
+
+        <span style="color:#007C00">// if d1 is empty, use top card from d2
+        // if d2 is empty, use top card from d1
+        // otherwise, compare the top two cards
+
+        // add lowest card to the new deck at k
+        // increment i or j (depending on card)</span>
+    }
+    <span style="color:#007C00">// return the new deck</span>
+}</td></tr>
+</tbody></table><p>An exercise at the end of the chapter asks you to implement <code>merge</code>.
+It’s somewhat tricky, so be sure to test it with different subdecks.
+Once your <code>merge</code> method is working correctly, you can use it to write a simplified version of merge sort:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Deck almostMergeSort() {
+    <span style="color:#007C00">// divide the deck into two subdecks
+    // sort the subdecks using selectionSort
+    // merge the subdecks, return the result</span>
+}</td></tr>
+</tbody></table>
+<h2 id="sec157" class="section">13.7&nbsp;&nbsp;Adding recursion<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec157" aria-label="Anchor link for: sec157" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>Now that we have a way to <code>merge</code> two decks, the real fun begins!
+The magical thing about merge sort is that it is inherently recursive.
+Take another look at the pseudocode for <code>almostMergeSort</code> in the previous section.</p><p>At the point where you sort the subdecks, why should you invoke the slower method, <code>selectionSort</code>?
+Why not invoke the spiffy new <code>mergeSort</code> method, the one you are in the process of writing?
+Not only is that a good idea, it is <em>necessary</em> to achieve the log<sub>2</sub> performance advantage.
+<a id="item772"></a></p><p>To make <code>mergeSort</code> work recursively, you have to add a base case; otherwise it repeats forever.
+A simple base case is a subdeck with 0 or 1 cards.
+If <code>mergeSort</code> receives such a small subdeck, it can return it unmodified since it would already be sorted.</p><p>The recursive version of <code>mergeSort</code> looks something like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Deck mergeSort() {
+    <span style="color:#007C00">// if the deck has 0 or 1 cards, return it
+    // divide the deck into two subdecks
+    // sort the subdecks using mergeSort
+    // merge the subdecks, return the result</span>
+}</td></tr>
+</tbody></table><p><a id="item773"></a></p><p>As usual, there are two ways to think about recursive programs: you can think through the entire flow of execution, or you can make the “leap of faith” (see Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter8.html#leap_of_faith">8.4</a>).
+This example should encourage you to make the leap of faith.</p><p>When you used <code>selectionSort</code> to sort the subdecks, you didn’t feel compelled to follow the flow of execution.
+You just assumed it works because you had already debugged it.
+And all you did to make <code>mergeSort</code> recursive was replace one sorting algorithm with another.
+There is no reason to read the program any differently.</p><p>Well, almost.
+You might have to give some thought to getting the base case right and making sure that you reach it eventually.
+But other than that, writing the recursive version should be no problem.
+The most difficult part of merge sort is the <code>merge</code> method, and that part is not recursive.</p>
+<h2 id="sec158" class="section">13.8&nbsp;&nbsp;Static context<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec158" aria-label="Anchor link for: sec158" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter13.html#fig.deck">13.3</a> lists the <code>Deck</code> methods we have so far.
+In UML diagrams, <code><span style="color:blue">private</span></code> methods begin with a minus sign (<code>-</code>), and <code><span style="color:blue">static</span></code> methods are underlined.</p><p><a id="item774"></a>
+<a id="item775"></a>
+<a id="item776"></a></p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Objects of arrays _ Think Java _ Trinket_files/thinkjava7041.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 13.3: UML diagram for the <code>Deck</code> class.</td></tr>
+</tbody></table></div>
+<a id="fig.deck"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p>The helper methods <code>randomInt</code> and <code>merge</code> are <code><span style="color:blue">static</span></code>, because they do not require <code><span style="color:blue">this</span>.cards</code>.
+All other methods are instance methods, because they require an instance of <code><span style="color:blue">this</span>.cards</code>.
+For example, you cannot invoke the <code>print</code> method this way:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Deck.print();  <span style="color:#007C00">// wrong!</span></td></tr>
+</tbody></table><p><a id="item777"></a>
+<a id="item778"></a></p><p>If you try to compile this code, you will get the error, “non-static method print() cannot be referenced from a static context.”
+By <span style="font-weight:bold">static context</span>, the compiler means you are trying to invoke a method without passing <code><span style="color:blue">this</span></code>.
+To invoke an instance method, you need an instance:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Deck deck = <span style="color:blue">new</span> Deck();
+deck.print();  <span style="color:#007C00">// correct</span></td></tr>
+</tbody></table><p>Notice that <code>Deck</code> with a capital <code>D</code> is a class, and <code>deck</code> with a lowercase <code>d</code> is a variable.
+When you invoke <code>deck.print()</code>, the reference of <code>deck</code> becomes the reference <code><span style="color:blue">this</span></code>.
+For static methods, there is no such thing as <code><span style="color:blue">this</span></code>.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">private static</span> Deck merge(Deck d1, Deck d2) {
+    <span style="color:blue">return this</span>.cards;  <span style="color:#007C00">// wrong!</span>
+}</td></tr>
+</tbody></table><p>If you refer to <code><span style="color:blue">this</span></code> in a static method, you will get the compiler error, “non-static variable this cannot be referenced from a static context.”
+The <code>merge</code> method needs to create and return a new <code>Deck</code> object.</p>
+<h2 id="sec159" class="section">13.9&nbsp;&nbsp;Piles of cards<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec159" aria-label="Anchor link for: sec159" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item779"></a></p><p>Now that we have classes that represent cards and decks, let’s use them to make a game.
+One of the simplest card games that children play is called “War” (see <a href="https://en.wikipedia.org/wiki/War_(card_game)"><span style="font-family:monospace">https://en.wikipedia.org/wiki/War_(card_game)</span></a>).</p><p>In this game, the deck is divided into two or more piles.
+Players take turns revealing the top card of their pile.
+Whoever has the highest ranking card takes the two cards.
+If there is a tie, players draw four more cards.
+Whoever has the highest ranking fourth card takes all ten cards.
+The game continues until one player has won the entire deck.</p><p>We could use the <code>Deck</code> class to represent the individual piles.
+However, our implementation of <code>Deck</code> uses a <code>Card</code> array, and the length of an array can’t change.
+As the game progresses, we need to be able to add and remove cards from the piles.</p><p><a id="item780"></a>
+<a id="item781"></a></p><p>We can solve this problem by using an <code>ArrayList</code>, which is in the <code>java.util</code> package.
+An <code>ArrayList</code> is a <span style="font-weight:bold">collection</span>, which is an object that contains other objects.
+It provides methods to add and remove elements, and it grows and shrinks automatically.</p><p><a id="item782"></a>
+<a id="item783"></a></p><p>We will define a new class named <code>Pile</code> that represents a pile of cards.
+It uses an <code>ArrayList</code> (instead of an array) to store the <code>Card</code> objects.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public class</span> Pile {
+    <span style="color:blue">private</span> ArrayList&lt;Card&gt; cards;
+
+    <span style="color:blue">public</span> Pile() {
+        <span style="color:blue">this</span>.cards = <span style="color:blue">new</span> ArrayList&lt;Card&gt;();
+    }
+}</td></tr>
+</tbody></table><p><a id="item784"></a>
+<a id="item785"></a>
+<a id="item786"></a></p><p>When you declare an <code>ArrayList</code>, you specify the type it contains in angle brackets (<code>&lt;&gt;</code>).
+This declaration says that <code>cards</code> is not just an <code>ArrayList</code>, it’s an <code>ArrayList</code> of <code>Card</code> objects.
+The constructor initializes <code><span style="color:blue">this</span>.cards</code> with an empty <code>ArrayList</code>.</p><p><code>ArrayList</code> provides a method, <code>add</code>, that adds an element to the collection.
+We will write a <code>Pile</code> method that does the same thing:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public void</span> addCard(Card card) {
+    <span style="color:blue">this</span>.cards.add(card);        <span style="color:#007C00">// to the bottom of the pile</span>
+}</td></tr>
+</tbody></table><p><a id="item787"></a></p><p>We also need to be able to remove cards from the top (or front) of the pile.
+If we use <code>ArrayList.remove</code>, it will automatically shift the remaining cards left to fill the gap.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Card popCard() {
+    <span style="color:blue">return this</span>.cards.remove(0);  <span style="color:#007C00">// from the top of the pile</span>
+}</td></tr>
+</tbody></table><p>In order to know when to stop the game, we need to know how many cards are in each pile.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public int</span> size() {
+    <span style="color:blue">return this</span>.cards.size();
+}</td></tr>
+</tbody></table><p><a id="item788"></a></p><p>Methods like <code>addCard</code>, <code>popCard</code>, and <code>size</code>, which invoke another method without doing much additional work, are called <span style="font-weight:bold">wrapper methods</span>.
+The last method we need adds an entire subdeck to the pile.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public void</span> addDeck(Deck deck) {
+    <span style="color:blue">for</span> (Card card : deck.getCards()) {
+        <span style="color:blue">this</span>.cards.add(card);
+    }
+}</td></tr>
+</tbody></table><p>Now we can use <code>Deck</code> and <code>Pile</code> to implement the game.
+The <code>main</code> method begins like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:#007C00">// create and shuffle the deck</span>
+Deck deck = <span style="color:blue">new</span> Deck();
+deck.shuffle();
+
+<span style="color:#007C00">// divide the deck into piles</span>
+Pile p1 = <span style="color:blue">new</span> Pile();
+p1.addDeck(deck.subdeck(0, 25));
+Pile p2 = <span style="color:blue">new</span> Pile();
+p2.addDeck(deck.subdeck(26, 51));</td></tr>
+</tbody></table><p>The game itself is a loop that repeats until one of the piles is empty.
+At each iteration, we draw a card from each pile and compare their ranks.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:#007C00">// while both piles are not empty</span>
+<span style="color:blue">while</span> (p1.size() &gt; 0 &amp;&amp; p2.size() &gt; 0) {
+    Card c1 = p1.popCard();
+    Card c2 = p2.popCard();
+
+    <span style="color:#007C00">// compare the cards</span>
+    <span style="color:blue">int</span> diff = c1.getRank() - c2.getRank();
+    <span style="color:blue">if</span> (diff &gt; 0) {
+        p1.addCard(c1);
+        p1.addCard(c2);
+    } <span style="color:blue">else if</span> (diff &lt; 0) {
+        p2.addCard(c1);
+        p2.addCard(c2);
+    } <span style="color:blue">else</span> {  <span style="color:#007C00">// it's a tie...draw four more cards</span></td></tr>
+</tbody></table><p>One of the exercises at the end of this chapter asks you to implement the <code><span style="color:blue">else</span></code> block when there’s a tie.
+After the <code><span style="color:blue">while</span></code> loop ends, we display the winner based on which pile is not empty.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">if</span> (p1.size() &gt; 0) {
+    System.out.println(<span style="color:#B20000">"Player 1 wins!"</span>);
+} <span style="color:blue">else</span> {
+    System.out.println(<span style="color:#B20000">"Player 2 wins!"</span>);
+}</td></tr>
+</tbody></table><p><code>ArrayList</code> provides many other methods that we didn’t use for this example program.
+Take a minute to read about them in the Java documentation.</p>
+<h2 id="sec160" class="section">13.10&nbsp;&nbsp;Vocabulary<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec160" aria-label="Anchor link for: sec160" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold">pseudocode:</span></dt><dd class="dd-description"><a id="item789"></a>
+A way of designing programs by writing rough drafts in a combination of English and Java.</dd><dt class="dt-description"><span style="font-weight:bold">helper method:</span></dt><dd class="dd-description"><a id="item790"></a>
+Often a small method that does not do anything enormously useful by itself, but which helps another, more complex method.</dd><dt class="dt-description"><span style="font-weight:bold">top-down design:</span></dt><dd class="dd-description"><a id="item791"></a>
+Breaking down a problem into sub-problems, and solving each sub-problem one at a time.</dd><dt class="dt-description"><span style="font-weight:bold">selection sort:</span></dt><dd class="dd-description"><a id="item792"></a>
+A simple sorting algorithm that searches for the smallest or largest element <span style="font-style:italic">n</span> times.</dd><dt class="dt-description"><span style="font-weight:bold">merge sort:</span></dt><dd class="dd-description"><a id="item793"></a>
+A recursive sorting algorithm that divides an array into two parts, sorts each part (using merge sort), and merges the results.</dd><dt class="dt-description"><span style="font-weight:bold">off-by-one:</span></dt><dd class="dd-description"><a id="item794"></a>
+A common programming mistake that results in iterating one too few times (or one too many).</dd><dt class="dt-description"><span style="font-weight:bold">static context:</span></dt><dd class="dd-description"><a id="item795"></a>
+The parts of a class that run without reference to a specific instance of the class.</dd><dt class="dt-description"><span style="font-weight:bold">collection:</span></dt><dd class="dd-description"><a id="item796"></a>
+A Java library class (such as <code>ArrayList</code>) that represents a group of objects.</dd><dt class="dt-description"><span style="font-weight:bold">wrapper method:</span></dt><dd class="dd-description"><a id="item797"></a>
+A method that calls another method without doing much additional work.</dd></dl>
+<h2 id="sec161" class="section">13.11&nbsp;&nbsp;Exercises<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter13.html#sec161" aria-label="Anchor link for: sec161" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>The code for this chapter is in the <span style="font-family:monospace">ch13</span> directory of <span style="font-family:monospace">ThinkJavaCode2</span>.
+See page&nbsp;<a href="https://books.trinket.io/thinkjava2/preface.html#code">??</a> for instructions on how to download the repository.
+Before you start the exercises, we recommend that you compile and run the examples.</p><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;1</span>&nbsp;&nbsp; <p><em>Write a <code>toString</code> method for the <code>Deck</code> class.
+It should return a single string that represents the cards in the deck.
+When it’s printed, this string should display the same results as the <code>print</code> method in Section&nbsp;</em><a href="https://books.trinket.io/thinkjava2/chapter13.html#deck"><em>13.1</em></a><em>.</em></p><p><a id="item798"></a>
+<a id="item799"></a></p><p><em><span style="font-style:italic">Hint:</span> You can use the <code>+</code> operator to concatenate strings, but it is not very efficient.
+Consider using <code>java.lang.StringBuilder</code> instead; you can review the documentation by doing a web search for “Java StringBuilder”.</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;2</span>&nbsp;&nbsp; <a id="ex.shuffle"></a><p><em>The goal of this exercise is to implement the shuffling algorithm from this chapter.</em></p><ol class="enumerate" type="1"><li class="li-enumerate"><em>In the repository for this book, you should find the file named <span style="font-family:monospace">Deck.java</span>.
+Check that you can compile it in your environment.</em></li><li class="li-enumerate"><em>Implement the <code>randomInt</code> method.
+You can use the <code>nextInt</code> method provided by <code>java.util.Random</code>, which we saw in Section&nbsp;</em><a href="https://books.trinket.io/thinkjava2/chapter7.html#random"><em>7.6</em></a><em>.</em><p><em><span style="font-style:italic">Hint:</span> Avoid creating a <code>Random</code> object every time <code>randomInt</code> is invoked by defining a class variable.</em></p></li><li class="li-enumerate"><em>Implement the <code>swapCards</code> method that takes two indexes and swaps the cards at the given locations.</em></li><li class="li-enumerate"><em>Implement the <code>shuffle</code> method using the algorithm in Section&nbsp;</em><a href="https://books.trinket.io/thinkjava2/chapter13.html#shuffle"><em>13.2</em></a><em>.</em></li></ol></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;3</span>&nbsp;&nbsp; <p><em>The goal of this exercise is to implement the sorting algorithms from this chapter.
+Use the <span style="font-family:monospace">Deck.java</span> file from the previous exercise, or create a new one from scratch.</em></p><ol class="enumerate" type="1"><li class="li-enumerate"><em>Implement the <code>indexLowest</code> method.
+Use the <code>Card.compareTo</code> method to find the lowest card in a given range of the deck (from <code>lowIndex</code> to <code>highIndex</code>, including both).</em></li><li class="li-enumerate"><em>Implement <code>selectionSort</code> using the algorithm in Section&nbsp;</em><a href="https://books.trinket.io/thinkjava2/chapter13.html#sorting"><em>13.3</em></a><em>.</em></li><li class="li-enumerate"><em>Using the pseudocode in Section&nbsp;</em><a href="https://books.trinket.io/thinkjava2/chapter13.html#mergesort"><em>13.4</em></a><em>, implement the <code>merge</code> method.
+The best way to test it is to build and shuffle a deck.
+Then use <code>subdeck</code> to form two small subdecks, and use selection sort to sort them.
+Finally, pass the two halves to <code>merge</code> and see if it works.
+</em><a id="item800"></a></li><li class="li-enumerate"><em>Implement <code>almostMergeSort</code>, the one that divides the deck in half, uses <code>selectionSort</code> to sort the two halves, and uses <code>merge</code> to create a new, sorted deck.
+You should be able to reuse code from the previous step.</em></li><li class="li-enumerate"><em>Implement <code>mergeSort</code> recursively.
+Remember that <code>selectionSort</code> is a modifier and <code>mergeSort</code> is a pure method, which means that they get invoked differently:</em><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><em>deck.selectionSort();      <span style="color:#007C00">// modifies an existing deck</span>
+deck = deck.mergeSort();   <span style="color:#007C00">// replaces old deck with new</span></em></td></tr>
+</tbody></table></li></ol></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;4</span>&nbsp;&nbsp;<p><em>You can learn more about the sorting algorithms in this chapter, and others, at </em><a href="http://www.sorting-algorithms.com/"><em>sorting-algorithms.com</em></a><em>.
+This site provides explanations of the algorithms and animations that show how they work.
+It also includes an analysis of their efficiency.</em></p><p><em>For example, “insertion sort” is an algorithm that inserts elements into place, one at a time.
+Read about it at </em><a href="http://www.sorting-algorithms.com/insertion-sort"><span style="font-family:monospace"><em>http://www.sorting-algorithms.com/insertion-sort</em></span></a><em>.
+Then write a method named <code>insertionSort</code> that implements this algorithm.</em></p><p><em>One goal of this exercise is to practice top-down design.
+Your solution should use a helper method, named <code>insert</code>, that implements the inner loop of the algorithm.
+<code>insertionSort</code> should invoke this method </em><span style="font-style:italic">n</span>−1<em> times.</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;5</span>&nbsp;&nbsp; <p><em>Find and open the file <code>War.java</code> in the repository.
+The <code>main</code> method contains all the code from the last section of this chapter.
+Check that you can compile and run this code before proceeding.</em></p><p><em>The program is incomplete; it does not handle the case when two cards have the same rank.
+Finish implementing the <code>main</code> method beginning at the line that says: <span style="color:#007C00"><code>//&nbsp;it's&nbsp;a&nbsp;tie...draw&nbsp;four&nbsp;more&nbsp;cards</code></span>.</em></p><p><em>When there’s a tie, draw three cards from each pile and store them in a collection, along with the original two.
+Then draw one more card from each pile and compare them.
+Whoever wins the tie will take all ten of these cards.</em></p><p><em>If one pile does not have at least four cards, the game ends immediately.
+If a tie ends with a tie, flip a coin and give the cards to one of the players.</em></p><p><em>Notice that this program depends on <code>Deck.shuffle</code>.
+If you haven’t implemented the <code>shuffle</code> method (see Exercise&nbsp;</em><a href="https://books.trinket.io/thinkjava2/chapter13.html#ex.shuffle"><em>2</em></a><em>), the game won’t be that fun.
+Player 1 will have the Ace through King of the first two suits, and Player 2 will have the the Ace through King of the other two suits, all in the same order.</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;6</span>&nbsp;&nbsp; <p><em>Extend your program from the previous exercise to handle the case when a tie ends with a tie.
+In other words, when the fourth cards have the same rank, add three more cards to the collection and try again.
+You will need to wrap your code in a loop, for example: <code><span style="color:blue">while</span>&nbsp;(diff&nbsp;==&nbsp;0)</code>.</em></p></div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+<div class="bookcopyright">
+  <div class="row">
+    <div class="columns small-12">
+      <div>
+Text © Allen Downey and Chris Mayfield.  Interactive HTML © Trinket.  Both provided
+under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-NC-BY</a> license.  Think Java Second Edition version 6.6.0.
+</div>
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    
+
+  </div> <!-- end main-content-wrapper -->
+
+  
+    
+  
+
+  <div trinket-language=""></div>
+
+  
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    messageStyle : "none",
+    tex2jax      : {
+      inlineMath     : [['$(',')$'], ['\\(','\\)']],
+      ignoreClass    : "mathjax-ignore",
+      processEscapes : true
+    },
+    TeX          : {
+      extensions : ["[siunitx]/siunitx.js"]
+    }
+  });
+  MathJax.Ajax.config.path['siunitx']  = "/cache-prefix-b8de66a3/components/Mathjax-siunitx";
+  </script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/jquery-ui.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/angular-route.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/restangular.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/marked.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/highlight.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/ace.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/foundation.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/flash.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/trinket.js(1).download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/aes.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/roles.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/join-course.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/courses.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/cache.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/gallery.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/debug.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/ng-text-select.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/text-select.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/trinket-share.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/trinket-groups.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/notify.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/angular-aria.min.js.download"></script>
+  
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/angular-file-upload.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/mm-foundation-tpls.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/angular-notifyjs.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/moment.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/moment-timezone-with-data.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/angular-moment.min.js.download"></script>
+  
+    <script src="./Objects of arrays _ Think Java _ Trinket_files/app.min.js.download"></script>
+  
+
+  
+  <script>$(document).foundation()</script>
+  
+
+  <script>
+      $(document).on('open', '#newTrinketModal', function() {
+        $('.has-dropdown').removeClass('hover');
+      });
+      $('*[data-auth-init]').click(function(event) {
+        event.preventDefault();
+        var href     = $(this).attr('href');
+        var provider = $(this).data('auth-init');
+        ga('send', 'event', provider + ' Auth', 'Started', window.location.pathname, {
+          'hitCallback' : function() {
+            window.location.href = href;
+          }
+        });
+      });
+      
+
+      $.notify.addStyle('foundation', {
+        html : '<div><span data-notify-html></span></div>'
+      });
+      $.notify.defaults({
+          position  : 'bottom center'
+        , arrowShow : false
+        , style     : 'foundation'
+        , gap       : 0
+      });
+  </script>
+  
+<script type="text/javascript" scr="/cache-prefix-b8de66a3/components/foundation/js/foundation/foundation.topbar.js"></script>
+<script src="./Objects of arrays _ Think Java _ Trinket_files/lazysizes.min.js.download"></script>
+<script src="./Objects of arrays _ Think Java _ Trinket_files/anchor.min.js.download"></script>
+<script>
+    anchors.add('h2:not(.no-anchor)');
+    anchors.add('.anchor')
+    anchors.remove('.no-anchor');
+</script>
+
+  
+
+
+
+
+  
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 970987464;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<div style="display:none">
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+</div>
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/970987464/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+  
+
+
+  
+<script src="https://platform.twitter.com/oct.js" type="text/javascript" async="true"></script>
+    
+      
+  
+<script type="text/javascript">
+twttr.conversion.trackPid('l4kgy', { tw_sale_amount: 0, tw_order_quantity: 0 });</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4kgy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4kgy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" /></noscript>
+  
+
+    
+    
+  
+
+
+<script type="text/javascript">
+$(document).on('click', '.contact-us-link', function(event) {
+  if (typeof(Intercom) !== "undefined") {
+    event.preventDefault();
+    Intercom('showNewMessage');
+  }
+});
+</script>
+
+
+
+
+
+</div></body></html>

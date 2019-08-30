@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://books.trinket.io/thinkjava2/chapter12.html -->
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta class="foundation-mq-small"><meta class="foundation-mq-small-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-large"><meta class="foundation-mq-large-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xxlarge"><meta class="foundation-data-attribute-namespace"><style class="anchorjs"></style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  
+  
+  <title>Arrays of objects | Think Java | Trinket</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+  <link rel="icon" href="https://books.trinket.io/img/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-precomposed.png">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Arrays of objects _ Think Java _ Trinket_files/github.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Arrays of objects _ Think Java _ Trinket_files/font-awesome.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Arrays of objects _ Think Java _ Trinket_files/video-js.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Arrays of objects _ Think Java _ Trinket_files/base.css">
+  
+  
+
+  <script async="" src="./Arrays of objects _ Think Java _ Trinket_files/fbevents.js.download"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
+    trinket = {
+      config : {
+        apphostname    : 'trinket.io',
+        usersubdomains : true,
+        protocol       : 'https',
+        addthisurl     : '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5344021135dae100',
+        cachePrefix    : 'cache-prefix-',
+        prefixes       : {"components":"cache-prefix-b8de66a3","js":"cache-prefix-5340c6b8","css":"cache-prefix-5340c6b8","img":"cache-prefix-5340c6b8","fonts":"cache-prefix-5340c6b8","partials":"cache-prefix-5340c6b8","skulpt":"321e8852","pypyjs":"cache-prefix-e8e5bcf1"},
+        components     : {"ace-builds":"v1.2.6.1rc2","anchor-js":"2.0.0","angular-file-saver":"1.1.3","angular-load":"0.1.2","angular-notifyjs":"0.1.0","angular-ui-router":"0.2.11","angular-ui-tree":"2.0.10","angular-ui-utils":"0.1.1","angular-xeditable":"0.1.8","bluebird":"3.5.1","d3":"3.4.11","filereader":"107f68c3b9","file-saver.js":"1.20150507.2","font-mfizz":"2.0.1","gsap":"1.15.0","jquery-ui":"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1","jsdiff":"1.0.8","jszip":"3.1.4","lazysizes":"1.5.0","lodash":"2.4.1","modernizr":"2.7.2","ng-file-upload":"1.2.6","ngInfiniteScroll":"1.1.2","notifyjs":"0.4.2","opal":"0.6.2","restangular":"1.3.1","speakingurl":"1.1.5","video.js":"5.20.4","yamljs":"0.1.5"},
+        vendorHost     : 'https://trinket-vendor-assets.trinket.io',
+        trinketTypes   : [
+          { lang : 'python',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Python'                                     },
+          { lang : 'python3',    image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Python3', icon : 'trinket-key logo premium' },
+          { lang : 'pygame',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Pygame', icon : 'trinket-key logo premium' },
+          { lang : 'java',       image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/java.png',       label : 'Java',    icon : 'trinket-key logo premium' },
+          { lang : 'R',          image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/R.png',          label : 'R',       icon : 'trinket-key logo premium' },
+          { lang : 'blocks',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/blocks.png',     label : 'Blocks'                                     },
+          { lang : 'html',       image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/html.png',       label : 'HTML'                                       },
+          { lang : 'glowscript', image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/glowscript.png', label : 'GlowScript'                                 },
+          { lang : 'music',      image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/music.png',      label : 'Music'                                      }
+        ],
+        autorun           : ["python","glowscript","blocks","python3","java","glowscript-blocks","R"],
+        outputOnly        : ["python","html","glowscript","blocks","python3","pygame","java","glowscript-blocks","R"],
+        toggleCode        : ["python","html","glowscript","blocks","python3","pygame","java","glowscript-blocks","R"],
+        downloadable      : ["python","html","python3","pygame","java","blocks","glowscript-blocks","R","pygame"],
+        uploadable        : ["blocks","glowscript-blocks"],
+        hideGeneratedCode : ["blocks","glowscript-blocks"],
+        runOption         : {"python":["run","console"],"python3":["run","console"],"R":["run","console"]},
+        plans             : [{ "connect"  : "Connect"  },
+                             { "codeplus" : "Code+" }]
+      }
+    };
+  </script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/modernizr.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/lodash.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/jquery.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/angular.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/trinket.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/trinket-config.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/trinket-roles.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/template.js.download"></script>
+  
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46899028-1', 'trinket.io');
+  
+  ga('set', 'dimension2', 'trinket');
+  
+  ga('send', 'pageview');
+
+  
+
+</script>
+
+  
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1441353372787187'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1441353372787187&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+  
+
+
+  
+<style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style></style><style type="text/css" id="notify-bootstrap">.notifyjs-bootstrap-base {
+	font-weight: bold;
+	padding: 8px 15px 8px 14px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	white-space: nowrap;
+	padding-left: 25px;
+	background-repeat: no-repeat;
+	background-position: 3px 7px;
+}
+.notifyjs-bootstrap-error {
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border-color: #EED3D7;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAtRJREFUeNqkVc1u00AQHq+dOD+0poIQfkIjalW0SEGqRMuRnHos3DjwAH0ArlyQeANOOSMeAA5VjyBxKBQhgSpVUKKQNGloFdw4cWw2jtfMOna6JOUArDTazXi/b3dm55socPqQhFka++aHBsI8GsopRJERNFlY88FCEk9Yiwf8RhgRyaHFQpPHCDmZG5oX2ui2yilkcTT1AcDsbYC1NMAyOi7zTX2Agx7A9luAl88BauiiQ/cJaZQfIpAlngDcvZZMrl8vFPK5+XktrWlx3/ehZ5r9+t6e+WVnp1pxnNIjgBe4/6dAysQc8dsmHwPcW9C0h3fW1hans1ltwJhy0GxK7XZbUlMp5Ww2eyan6+ft/f2FAqXGK4CvQk5HueFz7D6GOZtIrK+srupdx1GRBBqNBtzc2AiMr7nPplRdKhb1q6q6zjFhrklEFOUutoQ50xcX86ZlqaZpQrfbBdu2R6/G19zX6XSgh6RX5ubyHCM8nqSID6ICrGiZjGYYxojEsiw4PDwMSL5VKsC8Yf4VRYFzMzMaxwjlJSlCyAQ9l0CW44PBADzXhe7xMdi9HtTrdYjFYkDQL0cn4Xdq2/EAE+InCnvADTf2eah4Sx9vExQjkqXT6aAERICMewd/UAp/IeYANM2joxt+q5VI+ieq2i0Wg3l6DNzHwTERPgo1ko7XBXj3vdlsT2F+UuhIhYkp7u7CarkcrFOCtR3H5JiwbAIeImjT/YQKKBtGjRFCU5IUgFRe7fF4cCNVIPMYo3VKqxwjyNAXNepuopyqnld602qVsfRpEkkz+GFL1wPj6ySXBpJtWVa5xlhpcyhBNwpZHmtX8AGgfIExo0ZpzkWVTBGiXCSEaHh62/PoR0p/vHaczxXGnj4bSo+G78lELU80h1uogBwWLf5YlsPmgDEd4M236xjm+8nm4IuE/9u+/PH2JXZfbwz4zw1WbO+SQPpXfwG/BBgAhCNZiSb/pOQAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-success {
+	color: #468847;
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+}
+.notifyjs-bootstrap-info {
+	color: #3A87AD;
+	background-color: #D9EDF7;
+	border-color: #BCE8F1;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QYFAhkSsdes/QAAA8dJREFUOMvVlGtMW2UYx//POaWHXg6lLaW0ypAtw1UCgbniNOLcVOLmAjHZolOYlxmTGXVZdAnRfXQm+7SoU4mXaOaiZsEpC9FkiQs6Z6bdCnNYruM6KNBw6YWewzl9z+sHImEWv+vz7XmT95f/+3/+7wP814v+efDOV3/SoX3lHAA+6ODeUFfMfjOWMADgdk+eEKz0pF7aQdMAcOKLLjrcVMVX3xdWN29/GhYP7SvnP0cWfS8caSkfHZsPE9Fgnt02JNutQ0QYHB2dDz9/pKX8QjjuO9xUxd/66HdxTeCHZ3rojQObGQBcuNjfplkD3b19Y/6MrimSaKgSMmpGU5WevmE/swa6Oy73tQHA0Rdr2Mmv/6A1n9w9suQ7097Z9lM4FlTgTDrzZTu4StXVfpiI48rVcUDM5cmEksrFnHxfpTtU/3BFQzCQF/2bYVoNbH7zmItbSoMj40JSzmMyX5qDvriA7QdrIIpA+3cdsMpu0nXI8cV0MtKXCPZev+gCEM1S2NHPvWfP/hL+7FSr3+0p5RBEyhEN5JCKYr8XnASMT0xBNyzQGQeI8fjsGD39RMPk7se2bd5ZtTyoFYXftF6y37gx7NeUtJJOTFlAHDZLDuILU3j3+H5oOrD3yWbIztugaAzgnBKJuBLpGfQrS8wO4FZgV+c1IxaLgWVU0tMLEETCos4xMzEIv9cJXQcyagIwigDGwJgOAtHAwAhisQUjy0ORGERiELgG4iakkzo4MYAxcM5hAMi1WWG1yYCJIcMUaBkVRLdGeSU2995TLWzcUAzONJ7J6FBVBYIggMzmFbvdBV44Corg8vjhzC+EJEl8U1kJtgYrhCzgc/vvTwXKSib1paRFVRVORDAJAsw5FuTaJEhWM2SHB3mOAlhkNxwuLzeJsGwqWzf5TFNdKgtY5qHp6ZFf67Y/sAVadCaVY5YACDDb3Oi4NIjLnWMw2QthCBIsVhsUTU9tvXsjeq9+X1d75/KEs4LNOfcdf/+HthMnvwxOD0wmHaXr7ZItn2wuH2SnBzbZAbPJwpPx+VQuzcm7dgRCB57a1uBzUDRL4bfnI0RE0eaXd9W89mpjqHZnUI5Hh2l2dkZZUhOqpi2qSmpOmZ64Tuu9qlz/SEXo6MEHa3wOip46F1n7633eekV8ds8Wxjn37Wl63VVa+ej5oeEZ/82ZBETJjpJ1Rbij2D3Z/1trXUvLsblCK0XfOx0SX2kMsn9dX+d+7Kf6h8o4AIykuffjT8L20LU+w4AZd5VvEPY+XpWqLV327HR7DzXuDnD8r+ovkBehJ8i+y8YAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-warn {
+	color: #C09853;
+	background-color: #FCF8E3;
+	border-color: #FBEED5;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABJlBMVEXr6eb/2oD/wi7/xjr/0mP/ykf/tQD/vBj/3o7/uQ//vyL/twebhgD/4pzX1K3z8e349vK6tHCilCWbiQymn0jGworr6dXQza3HxcKkn1vWvV/5uRfk4dXZ1bD18+/52YebiAmyr5S9mhCzrWq5t6ufjRH54aLs0oS+qD751XqPhAybhwXsujG3sm+Zk0PTwG6Shg+PhhObhwOPgQL4zV2nlyrf27uLfgCPhRHu7OmLgAafkyiWkD3l49ibiAfTs0C+lgCniwD4sgDJxqOilzDWowWFfAH08uebig6qpFHBvH/aw26FfQTQzsvy8OyEfz20r3jAvaKbhgG9q0nc2LbZxXanoUu/u5WSggCtp1anpJKdmFz/zlX/1nGJiYmuq5Dx7+sAAADoPUZSAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfdBgUBGhh4aah5AAAAlklEQVQY02NgoBIIE8EUcwn1FkIXM1Tj5dDUQhPU502Mi7XXQxGz5uVIjGOJUUUW81HnYEyMi2HVcUOICQZzMMYmxrEyMylJwgUt5BljWRLjmJm4pI1hYp5SQLGYxDgmLnZOVxuooClIDKgXKMbN5ggV1ACLJcaBxNgcoiGCBiZwdWxOETBDrTyEFey0jYJ4eHjMGWgEAIpRFRCUt08qAAAAAElFTkSuQmCC);
+}
+</style><meta class="foundation-mq-topbar"><meta class="foundation-mq-topbar"><meta class="foundation-mq-small"><meta class="foundation-mq-medium"><meta class="foundation-mq-large"><style type="text/css" id="core-notify">.notifyjs-corner {
+	position: fixed;
+	margin: 5px;
+	z-index: 1050;
+}
+
+.notifyjs-corner .notifyjs-wrapper,
+.notifyjs-corner .notifyjs-container {
+	position: relative;
+	display: block;
+	height: inherit;
+	width: inherit;
+	margin: 3px;
+}
+
+.notifyjs-wrapper {
+	z-index: 1;
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+.notifyjs-container {
+	display: none;
+	z-index: 1;
+	position: absolute;
+}
+
+.notifyjs-hidable {
+	cursor: pointer;
+}
+
+[data-notify-text],[data-notify-html] {
+	position: relative;
+}
+
+.notifyjs-arrow {
+	position: absolute;
+	z-index: 2;
+	width: 0;
+	height: 0;
+}</style></head>
+<body ng-app="trinket.main" id="think-java" class="loggedin  ng-scope">
+
+  
+
+  <!-- for positioning footer at bottom of screen on short pages -->
+  <div class="main-content-wrapper">
+
+  <input id="whoami" type="hidden" value="ghirda">
+  
+  
+    <div class="nav-wrapper">
+      <nav class="top-bar" data-topbar="" data-options="is_hover: false" role="navigation" aria-label="Main Navigation">
+        <ul class="title-area">
+          <li class="name">
+            <a href="https://trinket.io/" role="button" aria-label="Index Page">
+              <img src="./Arrays of objects _ Think Java _ Trinket_files/trinket-logo.png" alt="Trinket helps you teach with code">
+            </a>
+            
+              
+              <a href="https://books.trinket.io/plans"><span class="radius code-label">Code</span></a>
+              
+            
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="https://books.trinket.io/thinkjava2/chapter12.html#"><span></span></a></li>
+        </ul>
+        
+      <section class="top-bar-section">
+          
+          <ul>
+            <li><a href="https://trinket.io/home" aria-label="Go Home"><i class="fa fa-home"></i> Home </a>
+          </li></ul>
+          
+          <ul class="right">
+            
+            <li><a href="https://trinket.io/plans"><i class="fa fa-star"></i> <span><span class="show-for-large-up">Plans</span></span></a></li>
+            <li><a href="https://hourofpython.com/"><i class="fa fa-graduation-cap"></i> <span><span class="show-for-large-up">Learn</span></span></a></li>
+            <li><a href="https://trinket.io/help"><i class="fa fa-question-circle"></i> <span><span class="show-for-large-up">Help</span></span></a></li>
+            
+            
+              <li class="has-dropdown" role="navigation">
+                <a class="dropdown-btn" role="button" aria-controls="user_dropdown" aria-label="Open User Menu">
+                  <img id="nav-user-avatar" src="./Arrays of objects _ Think Java _ Trinket_files/avatar-default.png" alt="Photo of ghirda" class="avatar">
+                  <span id="userdata" data-user-id="5d1c8055bf396f8f5ae05dc5">ghirda</span>
+                </a>
+                <ul id="user_dropdown" class="dropdown" role="menu" aria-label="User Menu"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+                  <li role="menuitem">
+                    <a href="https://trinket.io/home">
+                      <i class="fa fa-home"></i> Home
+                    </a>
+                  </li>
+                  <li class="divider" role="presentation"></li>
+                  <li role="menuitem">
+                    <a href="https://trinket.io/library/trinkets">
+                      My Trinkets
+                    </a>
+                  </li>
+                  <li class="has-dropdown" role="menuitem">
+                    <a role="button" aria-controls="new_trinket_list">New Trinket</a>
+                    <ul id="new_trinket_list" class="dropdown" role="group"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=python"><i class="lang-sprite lang-sprite-python"></i> Python</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=python3"><i class="lang-sprite lang-sprite-python"></i> Python3 <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=pygame"><i class="lang-sprite lang-sprite-pygame"></i> Pygame <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=R"><i class="lang-sprite lang-sprite-R"></i> R <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=blocks"><i class="lang-sprite lang-sprite-blocks"></i> Blocks</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=html"><i class="lang-sprite lang-sprite-html"></i> HTML</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=glowscript"><i class="lang-sprite lang-sprite-glowscript"></i> GlowScript</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=java"><i class="lang-sprite lang-sprite-java"></i> Java <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=music"><i class="lang-sprite lang-sprite-music"></i> Music</a></li>
+                    </ul>
+                  </li>
+                  <li class="divider" role="presentation"></li>
+                  <li><a href="https://trinket.io/account"><i class="fa fa-gear"></i> My Settings</a></li>
+                  
+                  <li class="divider" role="presentation"></li>
+                  <li><a href="https://trinket.io/help">Help</a></li>
+                  <li><a href="https://trinket.io/contact">Contact Us</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="https://trinket.io/logout">
+                  <i class="fa fa-sign-out"></i> Sign Out
+                </a>
+              </li>
+            
+          </ul>
+        </section></nav>
+    </div>
+  
+
+  
+  
+  
+
+  <section id="main-content" role="main">
+    
+<div class="booktoc contain-to-grid sticky">
+  <nav class="top-bar" data-topbar="" role="navigation">
+
+
+    <ul class="title-area">
+        <li class="name">
+          <h1><a href="https://books.trinket.io/thinkjava2/index.html">Think Java 2<span class="draft-label label round">Draft</span></a> </h1>
+        </li>
+        <li class="toggle-topbar"><a href="https://books.trinket.io/thinkjava2/chapter12.html"><span>Menu</span></a></li>
+
+      </ul>
+
+
+  
+  
+<section class="top-bar-section">
+    <ul class="left books-back-button">
+      <li>
+        <a href="https://books.trinket.io/">
+          <i class="fa fa-angle-left"></i> All Textbooks
+        </a>
+      </li>
+    </ul>
+  </section><section class="top-bar-section">
+
+
+    <ul class="left">
+        <li class="has-dropdown not-click">
+          <a href="https://books.trinket.io/thinkjava2/chapter12.html#">Chapters</a>
+          <ul class="dropdown">
+            <li><a href="https://books.trinket.io/thinkjava2/index.html">See All Chapters</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/preface.html">Preface</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter1.html">Chapter 1: Computer programming</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter2.html">Chapter 2: Variables and Operators</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter3.html">Chapter 3: Input and Output</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter4.html">Chapter 4: Methods and Testing</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter5.html">Chapter 5: Conditionals and Logic</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter6.html">Chapter 6: Loops and Strings</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter7.html">Chapter 7: Arrays and References</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter8.html">Chapter 8: Recursive Methods</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter9.html">Chapter 9: Immutable Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter10.html">Chapter 10: Mutable Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter11.html">Chapter 11: Designing Classes</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter12.html">Chapter 12: Arrays of Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter13.html">Chapter 13: Objects of Arrays</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter14.html">Chapter 14: Extending Classes</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-a.html">Appendix A: Tools</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-b.html">Appendix B: Javadoc</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-c.html">Appendix C: Graphics</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-d.html">Appendix D: Debugging</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-e.html">Appendix E: Extras</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/book-index.html">Index</a></li>
+          </ul>
+        </li>
+    </ul>
+
+
+
+<ul class="right"><li class="has-dropdown not-click"><a href="https://books.trinket.io/thinkjava2/chapter12.html">Arrays of objects</a>
+<ul class="dropdown">
+<li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec138">Card objects</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec139">Card toString</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec140">Class variables</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec141">The compareTo method</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec142">Cards are immutable</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec143">Arrays of cards</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec144">Sequential search</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec145">Binary search</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec146">Tracing the code</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec147">Recursive version</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec148">Vocabulary</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter12.html#sec149">Exercises</a>
+</li></ul>
+</li></ul>
+
+
+  </section></nav></div>
+
+<div class="bookchapter">
+
+
+<div class="row">
+<div class="columns small-12">
+
+
+      <div class="row">
+        <div class="columns small-12"><h1 id="sec137" class="chapter">Chapter&nbsp;12&nbsp;&nbsp;Arrays of objects</h1>
+<p>During the next three chapters, we will develop programs that work with playing cards and decks of cards.
+Here is an outline of the road ahead:</p><ul class="itemize"><li class="li-itemize">In this chapter, we define a <code>Card</code> class and write methods that work with cards and arrays of cards.</li><li class="li-itemize">In Chapter&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter13.html#deck">13.1</a>, we define a <code>Deck</code> class that encapsulates an array of cards, and we write methods that operate on decks.</li><li class="li-itemize">In Chapter&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter14.html#eights">14</a>, we introduce a way to create new classes that extend existing classes.
+We then use <code>Card</code>, <code>Deck</code>, and other classes to implement the game <span style="font-style:italic">Crazy Eights</span>.</li></ul><p><a id="item688"></a>
+<a id="item689"></a></p><p>There are 52 cards in a standard deck.
+Each card belongs to one of four suits and one of 13 ranks.
+The suits are Clubs, Diamonds, Hearts, and Spades.
+The ranks are Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, and King.</p><p>If you are unfamiliar with traditional playing cards, now would be a good time to get a deck or read through <a href="https://en.wikipedia.org/wiki/Standard_52-card_deck"><span style="font-family:monospace">https://en.wikipedia.org/wiki/Standard_52-card_deck</span></a>.</p>
+<h2 id="sec138" class="section">12.1&nbsp;&nbsp;Card objects<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec138" aria-label="Anchor link for: sec138" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item690"></a>
+<a id="item691"></a></p><p>If we want to define a class to represent a playing card, it is pretty obvious what the instance variables should be: <code>rank</code> and <code>suit</code>.
+It is not as obvious what types they should be.</p><p>One possibility is a <code>String</code> containing things like <span style="color:#B20000"><code>"Spade"</code></span> for suits and <span style="color:#B20000"><code>"Queen"</code></span> for ranks.
+A problem with this design is that it would not be easy to compare cards to see which had a higher rank or suit.</p><p><a id="item692"></a>
+<a id="item693"></a></p><p>An alternative is to use integers to <span style="font-weight:bold">encode</span> the ranks and suits.
+By encode, we don’t mean to encrypt or translate into a secret code.
+We mean to define a mapping between a sequence of numbers and the things we want to represent.</p><p>Here is a mapping for suits:</p><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="text-align:left;white-space:nowrap">Clubs</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">0 </td></tr>
+<tr><td style="text-align:left;white-space:nowrap">Diamonds</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">1 </td></tr>
+<tr><td style="text-align:left;white-space:nowrap">Hearts</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">2 </td></tr>
+<tr><td style="text-align:left;white-space:nowrap">Spades</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">3
+</td></tr>
+</tbody></table><p>We use the mathematical symbol ↦ to make it clear that these mappings are not part of the program.
+They are part of the program design, but they never appear explicitly in the code.</p><p>Each of the numerical ranks (2 through 10) maps to the corresponding integer.
+For the face cards, we can use:</p><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="text-align:left;white-space:nowrap">Ace</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">1 </td></tr>
+<tr><td style="text-align:left;white-space:nowrap">Jack</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">11 </td></tr>
+<tr><td style="text-align:left;white-space:nowrap">Queen</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">12 </td></tr>
+<tr><td style="text-align:left;white-space:nowrap">King</td><td style="text-align:center;white-space:nowrap">↦</td><td style="text-align:left;white-space:nowrap">13 </td></tr>
+</tbody></table><p>So far, the class definition for the <code>Card</code> type looks like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public class</span> Card {
+    <span style="color:blue">private int</span> rank;
+    <span style="color:blue">private int</span> suit;
+
+    <span style="color:blue">public</span> Card(<span style="color:blue">int</span> rank, <span style="color:blue">int</span> suit) {
+        <span style="color:blue">this</span>.rank = rank;
+        <span style="color:blue">this</span>.suit = suit;
+    }
+}</td></tr>
+</tbody></table><p><a id="item694"></a></p><p>The instance variables are <code><span style="color:blue">private</span></code>: we can access them from inside this class, but not from other classes.</p><p>The constructor takes a parameter for each instance variable.
+To create a <code>Card</code> object, we use the <code><span style="color:blue">new</span></code> operator:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Card threeOfClubs = <span style="color:blue">new</span> Card(3, 0);</td></tr>
+</tbody></table><p>The result is a reference to a <code>Card</code> that represents the “3 of Clubs”.</p>
+<h2 id="sec139" class="section">12.2&nbsp;&nbsp;Card toString<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec139" aria-label="Anchor link for: sec139" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item695"></a></p><p>When you create a new class, the first step is to declare the instance variables and write constructors.
+A good next step is to write <code>toString</code>, which is useful for debugging and incremental development.</p><p><a id="item696"></a>
+<a id="item697"></a></p><p>To display <code>Card</code> objects in a way that humans can read easily, we need to “decode” the integer values as words.
+A natural way to do that is with an array of <code>String</code>s.
+For example, we can create the array like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">String[] suits = <span style="color:blue">new</span> String[4];</td></tr>
+</tbody></table><p>And then assign values to the elements:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">suits[0] = <span style="color:#B20000">"Clubs"</span>;
+suits[1] = <span style="color:#B20000">"Diamonds"</span>;
+suits[2] = <span style="color:#B20000">"Hearts"</span>;
+suits[3] = <span style="color:#B20000">"Spades"</span>;</td></tr>
+</tbody></table><p>Or we can create the array and initialize the elements at the same time, as we saw in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter7.html#printarray">7.3</a>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">String[] suits = {<span style="color:#B20000">"Clubs"</span>, <span style="color:#B20000">"Diamonds"</span>, <span style="color:#B20000">"Hearts"</span>, <span style="color:#B20000">"Spades"</span>};</td></tr>
+</tbody></table><p><a id="item698"></a>
+<a id="item699"></a>
+<a id="item700"></a>
+<a id="item701"></a></p><p>The memory diagram in Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter12.html#fig.stringarray">12.1</a> shows the result.
+Each element of the array is a reference to a <code>String</code>.</p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Arrays of objects _ Think Java _ Trinket_files/thinkjava7036.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 12.1: Memory diagram of an array of strings.</td></tr>
+</tbody></table></div>
+<a id="fig.stringarray"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p>We also need an array to decode the ranks:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">String[] ranks = {<span style="color:blue">null</span>, <span style="color:#B20000">"Ace"</span>, <span style="color:#B20000">"2"</span>, <span style="color:#B20000">"3"</span>, <span style="color:#B20000">"4"</span>, <span style="color:#B20000">"5"</span>, <span style="color:#B20000">"6"</span>,
+           <span style="color:#B20000">"7"</span>, <span style="color:#B20000">"8"</span>, <span style="color:#B20000">"9"</span>, <span style="color:#B20000">"10"</span>, <span style="color:#B20000">"Jack"</span>, <span style="color:#B20000">"Queen"</span>, <span style="color:#B20000">"King"</span>};</td></tr>
+</tbody></table><p>The zeroth element should never be used, because the only valid ranks are 1–13.
+We set it to <code><span style="color:blue">null</span></code> to indicate an unused element.</p><p>Using these arrays, we can create a meaningful <code>String</code> using <code>suit</code> and <code>rank</code> as indexes.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">String s = ranks[<span style="color:blue">this</span>.rank] + <span style="color:#B20000">" of "</span> + suits[<span style="color:blue">this</span>.suit];</td></tr>
+</tbody></table><p>The expression <code>ranks[<span style="color:blue">this</span>.rank]</code> means “use the instance variable <code>rank</code> from <code><span style="color:blue">this</span></code> object as an index into the array <code>ranks</code>.”
+We select the string for <code><span style="color:blue">this</span>.suit</code> in a similar way.</p><p>Now we can wrap all the previous code in a <code>toString</code> method.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> String toString() {
+    String[] ranks = {<span style="color:blue">null</span>, <span style="color:#B20000">"Ace"</span>, <span style="color:#B20000">"2"</span>, <span style="color:#B20000">"3"</span>, <span style="color:#B20000">"4"</span>, <span style="color:#B20000">"5"</span>, <span style="color:#B20000">"6"</span>,
+               <span style="color:#B20000">"7"</span>, <span style="color:#B20000">"8"</span>, <span style="color:#B20000">"9"</span>, <span style="color:#B20000">"10"</span>, <span style="color:#B20000">"Jack"</span>, <span style="color:#B20000">"Queen"</span>, <span style="color:#B20000">"King"</span>};
+    String[] suits = {<span style="color:#B20000">"Clubs"</span>, <span style="color:#B20000">"Diamonds"</span>, <span style="color:#B20000">"Hearts"</span>, <span style="color:#B20000">"Spades"</span>};
+    String s = ranks[<span style="color:blue">this</span>.rank] + <span style="color:#B20000">" of "</span> + suits[<span style="color:blue">this</span>.suit];
+    <span style="color:blue">return</span> s;
+}</td></tr>
+</tbody></table><p>When we display a card, <code>println</code> automatically calls <code>toString</code>.
+The output of the following code is <span style="font-family:monospace">Jack of Diamonds</span>.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Card card = <span style="color:blue">new</span> Card(11, 1);
+System.out.println(card);</td></tr>
+</tbody></table>
+<h2 id="sec140" class="section">12.3&nbsp;&nbsp;Class variables<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec140" aria-label="Anchor link for: sec140" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>
+<a id="classvar"></a></p><p><a id="item702"></a></p><p>So far we have seen local variables, which are declared inside a method, and instance variables, which are declared in a class definition, usually before the method definitions.
+Now it’s time to learn about <span style="font-weight:bold">class variables</span>.
+They are shared across all instances of the class.</p><p><a id="item703"></a>
+<a id="item704"></a></p><p>Like instance variables, class variables are defined in a class definition, before the method definitions.
+But they are identified by the keyword <code><span style="color:blue">static</span></code>.
+Here is a version of <code>Card</code> where <code>RANKS</code> and <code>SUITS</code> are defined as class variables:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public class</span> Card {
+
+    <span style="color:blue">public static final</span> String[] RANKS = {
+        <span style="color:blue">null</span>, <span style="color:#B20000">"Ace"</span>, <span style="color:#B20000">"2"</span>, <span style="color:#B20000">"3"</span>, <span style="color:#B20000">"4"</span>, <span style="color:#B20000">"5"</span>, <span style="color:#B20000">"6"</span>, <span style="color:#B20000">"7"</span>,
+        <span style="color:#B20000">"8"</span>, <span style="color:#B20000">"9"</span>, <span style="color:#B20000">"10"</span>, <span style="color:#B20000">"Jack"</span>, <span style="color:#B20000">"Queen"</span>, <span style="color:#B20000">"King"</span>};
+
+    <span style="color:blue">public static final</span> String[] SUITS = {
+        <span style="color:#B20000">"Clubs"</span>, <span style="color:#B20000">"Diamonds"</span>, <span style="color:#B20000">"Hearts"</span>, <span style="color:#B20000">"Spades"</span>};
+
+    <span style="color:#007C00">// instance variables and constructors go here</span>
+
+    <span style="color:blue">public</span> String toString() {
+        <span style="color:blue">return</span> RANKS[<span style="color:blue">this</span>.rank] + <span style="color:#B20000">" of "</span> + SUITS[<span style="color:blue">this</span>.suit];
+    }
+}</td></tr>
+</tbody></table><p><a id="item705"></a></p><p>Class variables are allocated when the program begins (or when the class is used for the first time) and survive until the program ends.
+In contrast, instance variables like <code>rank</code> and <code>suit</code> are allocated when the program creates <code><span style="color:blue">new</span></code> objects, and they are reclaimed when the object is garbage-collected.</p><p><a id="item706"></a></p><p>Class variables are often used to store constant values that are needed in several places.
+In that case, they should also be declared as <code><span style="color:blue">final</span></code>.
+Note that whether a variable is <code><span style="color:blue">static</span></code> or <code><span style="color:blue">final</span></code> involves two separate considerations:
+<code><span style="color:blue">static</span></code> means the variable is <em>shared</em>, and <code><span style="color:blue">final</span></code> means the variable is <em>constant</em>.</p><p>Naming <code><span style="color:blue">static</span>&nbsp;<span style="color:blue">final</span></code> variables with capital letters is a common convention that makes it easier to recognize their role in the class.
+In the <code>toString</code> method, we can refer to <code>SUITS</code> and <code>RANKS</code> as if they were local variables, but we can tell that they are class variables.</p><p>One advantage of defining <code>SUITS</code> and <code>RANKS</code> as class variables is that they don’t need to be created (and garbage-collected) every time <code>toString</code> is called.
+They may also be needed in other methods and classes, so it’s helpful to make them available everywhere.
+Since the array variables are <code><span style="color:blue">final</span></code>, and the strings they reference are immutable, there is no danger in making them <code><span style="color:blue">public</span></code>.</p>
+<h2 id="sec141" class="section">12.4&nbsp;&nbsp;The compareTo method<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec141" aria-label="Anchor link for: sec141" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item707"></a></p><p>As we saw in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter11.html#equals">11.7</a>, it’s helpful to create an <code>equals</code> method to test whether two objects are equivalent.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public boolean</span> equals(Card that) {
+    <span style="color:blue">return this</span>.rank == that.rank
+        &amp;&amp; <span style="color:blue">this</span>.suit == that.suit;
+}</td></tr>
+</tbody></table><p><a id="item708"></a>
+<a id="item709"></a></p><p>It would also be nice to have a method for comparing cards, so we can tell if one is higher or lower than another.
+For primitive types, we can use the comparison operators – <code>&lt;</code>, <code>&gt;</code>, etc. – to compare values.
+But these operators don’t work for object types.
+For strings, Java provides a <code>compareTo</code> method, as we saw in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter6.html#strcmp">6.8</a>.
+We can write our own version of <code>compareTo</code> for the classes that we define, like we did for the <code>equals</code> method.
+</p><p><a id="item710"></a>
+<a id="item711"></a>
+<a id="item712"></a></p><p>Some types are “totally ordered”, which means that you can compare any two values and tell which is bigger.
+Integers and strings are totally ordered.
+Other types are “unordered”, which means that there is no meaningful way to say that one element is bigger than another.
+In Java, the <code><span style="color:blue">boolean</span></code> type is unordered; if you try to compare <code><span style="color:blue">true</span>&nbsp;&lt;&nbsp;<span style="color:blue">false</span></code>, you get a compiler error.</p><p>The set of playing cards is “partially ordered”, which means that sometimes we can compare cards and sometimes not.
+For example, we know that the 3 of Clubs is higher than the 2 of Clubs, and the 3 of Diamonds is higher than the 3 of Clubs.
+But which is better, the 3 of Clubs or the 2 of Diamonds?
+One has a higher rank, but the other has a higher suit.</p><p><a id="item713"></a></p><p>To make cards comparable, we have to decide which is more important: rank or suit.
+The choice is arbitrary, and it might be different for different games.
+But when you buy a new deck of cards, it comes sorted with all the Clubs together, followed by all the Diamonds, and so on.
+So for now, let’s say that suit is more important.
+With that decided, we can write <code>compareTo</code> as follows:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public int</span> compareTo(Card that) {
+    <span style="color:blue">if</span> (<span style="color:blue">this</span>.suit &lt; that.suit) {
+        <span style="color:blue">return</span> -1;
+    }
+    <span style="color:blue">if</span> (<span style="color:blue">this</span>.suit &gt; that.suit) {
+        <span style="color:blue">return</span> 1;
+    }
+    <span style="color:blue">if</span> (<span style="color:blue">this</span>.rank &lt; that.rank) {
+        <span style="color:blue">return</span> -1;
+    }
+    <span style="color:blue">if</span> (<span style="color:blue">this</span>.rank &gt; that.rank) {
+        <span style="color:blue">return</span> 1;
+    }
+    <span style="color:blue">return</span> 0;
+}</td></tr>
+</tbody></table><p><code>compareTo</code> returns 1 if <code><span style="color:blue">this</span></code> wins, -1 if <code>that</code> wins, and 0 if they are equivalent.
+It compares suits first.
+If the suits are the same, it compares ranks.
+If the ranks are also the same, it returns 0.</p>
+<h2 id="sec142" class="section">12.5&nbsp;&nbsp;Cards are immutable<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec142" aria-label="Anchor link for: sec142" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>The instance variables of <code>Card</code> are <code><span style="color:blue">private</span></code>, so they can’t be accessed from other classes.
+We can provide getters to allow other classes to read the <code>rank</code> and <code>suit</code> values:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public int</span> getRank() {
+    <span style="color:blue">return this</span>.rank;
+}
+
+<span style="color:blue">public int</span> getSuit() {
+    <span style="color:blue">return this</span>.suit;
+}</td></tr>
+</tbody></table><p><a id="item714"></a></p><p>Whether or not to provide setters is a design decision.
+If we did, cards would be mutable, so you could transform one card into another.
+That is probably not a feature we want, and in general, mutable objects are more error-prone.
+So it might be better to make cards immutable.
+To do that, all we have to do is <em>not</em> provide any modifier methods (including setters).</p><p><a id="item715"></a></p><p>That’s easy enough, but it is not foolproof, because some fool might come along later and add a modifier.
+We can prevent that possibility by declaring the instance variables <code><span style="color:blue">final</span></code>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public class</span> Card {
+    <span style="color:blue">private final int</span> rank;
+    <span style="color:blue">private final int</span> suit;
+
+    ...
+}</td></tr>
+</tbody></table><p>You can still assign values to these variables inside a constructor.
+But if someone writes a method that tries to modify these variables, they’ll get a compiler error.
+Putting these kinds of safeguards into the code helps prevent future mistakes and hours of debugging.</p>
+<h2 id="sec143" class="section">12.6&nbsp;&nbsp;Arrays of cards<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec143" aria-label="Anchor link for: sec143" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>
+<a id="cardarray"></a></p><p><a id="item716"></a>
+<a id="item717"></a></p><p>Just as you can create an array of <code>String</code> objects, you can create an array of <code>Card</code> objects.
+The following statement creates an array of 52 cards:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Card[] cards = <span style="color:blue">new</span> Card[52];</td></tr>
+</tbody></table><p>Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter12.html#fig.cardarray">12.2</a> shows the memory diagram for this array.</p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Arrays of objects _ Think Java _ Trinket_files/thinkjava7037.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 12.2: Memory diagram of an unpopulated <code>Card</code> array.</td></tr>
+</tbody></table></div>
+<a id="fig.cardarray"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p><a id="item718"></a></p><p>Although we call it an “array of cards”, the array contains <em>references</em> to cards; it does not contain the <code>Card</code> objects themselves.
+The references are initialized to <code><span style="color:blue">null</span></code>.
+You can access the elements of the array in the usual way:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">if</span> (cards[0] == <span style="color:blue">null</span>) {
+    System.out.println(<span style="color:#B20000">"No card yet!"</span>);
+}</td></tr>
+</tbody></table><p><a id="item719"></a>
+<a id="item720"></a></p><p>If you try to access the instance variables of non-existent <code>Card</code> objects, you will get a <code>NullPointerException</code>.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">System.out.println(cards[0].rank);  <span style="color:#007C00">// NullPointerException</span></td></tr>
+</tbody></table><p><a id="item721"></a>
+<a id="item722"></a></p><p>That code won’t work until we put cards in the array.
+One way to populate the array is to write nested <code><span style="color:blue">for</span></code> loops:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">int</span> index = 0;
+<span style="color:blue">for</span> (<span style="color:blue">int</span> suit = 0; suit &lt;= 3; suit++) {
+    <span style="color:blue">for</span> (<span style="color:blue">int</span> rank = 1; rank &lt;= 13; rank++) {
+        cards[index] = <span style="color:blue">new</span> Card(rank, suit);
+        index++;
+    }
+}</td></tr>
+</tbody></table><p>The outer loop iterates suits from 0 to 3.
+For each suit, the inner loop iterates ranks from 1 to 13.
+Since the outer loop runs 4 times, and the inner loop runs 13 times for each suit, the body is executed 52 times.</p><p><a id="item723"></a></p><p>We use a separate variable <code>index</code> to keep track of where in the array the next card should go.
+Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter12.html#fig.cardarray2">12.3</a> shows what the array looks like after the first two cards have been created.</p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Arrays of objects _ Think Java _ Trinket_files/thinkjava7038.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 12.3: Memory diagram of a <code>Card</code> array with two cards.</td></tr>
+</tbody></table></div>
+<a id="fig.cardarray2"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p><a id="item724"></a></p><p>When you work with arrays, it is convenient to have a method that displays the contents.
+We have seen the pattern for traversing an array several times, so the following method should be familiar.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static void</span> printDeck(Card[] cards) {
+    <span style="color:blue">for</span> (Card card : cards) {
+        System.out.println(card);
+    }
+}</td></tr>
+</tbody></table><p>Since <code>cards</code> has type <code>Card[]</code>, an element of <code>cards</code> has type <code>Card</code>.
+So <code>println</code> invokes the <code>toString</code> method in the <code>Card</code> class.
+This method is similar to invoking <code>System.out.println(Arrays.toString(cards))</code>.</p>
+<h2 id="sec144" class="section">12.7&nbsp;&nbsp;Sequential search<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec144" aria-label="Anchor link for: sec144" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item725"></a></p><p>The next method we’ll write is <code>search</code>, which takes an array of cards and a <code>Card</code> object as parameters.
+It returns the index where the <code>Card</code> appears in the array, or <code>-1</code> if it doesn’t.
+This version of <code>search</code> uses the algorithm we saw in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter7.html#traversal">7.5</a>, which is called <span style="font-weight:bold">sequential search</span>:</p><p><a id="item726"></a>
+<a id="item727"></a></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static int</span> search(Card[] cards, Card target) {
+    <span style="color:blue">for</span> (<span style="color:blue">int</span> i = 0; i &lt; cards.length; i++) {
+        <span style="color:blue">if</span> (cards[i].equals(target)) {
+            <span style="color:blue">return</span> i;
+        }
+    }
+    <span style="color:blue">return</span> -1;
+}</td></tr>
+</tbody></table><p><a id="item728"></a>
+<a id="item729"></a></p><p>The method returns as soon as it discovers the card, which means we don’t have to traverse the entire array if we find the target.
+If we get to the end of the loop, we know the card is not in the array.
+Notice that this algorithm only depends on the <code>equals</code> method.</p><p><a id="item730"></a></p><p>If the cards in the array are not in order, there is no way to search faster than sequential search.
+We have to look at every card, because otherwise we can’t be certain the card we want is not there.
+But if the cards are in order, we can use better algorithms.</p><p>We will learn in the next chapter how to sort arrays.
+If you pay the price to keep them sorted, finding elements becomes much easier.
+Especially for large arrays, sequential search is rather inefficient.</p>
+<h2 id="sec145" class="section">12.8&nbsp;&nbsp;Binary search<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec145" aria-label="Anchor link for: sec145" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item731"></a></p><p>When you look for a word in a dictionary, you don’t just search page by page from front to back.
+Since the words are in alphabetical order, you probably use a <span style="font-weight:bold">binary search</span> algorithm:</p><ol class="enumerate" type="1"><li class="li-enumerate">Start on a page near the middle of the dictionary.</li><li class="li-enumerate">Compare a word on the page to the word you are looking for.
+If you find it, stop.</li><li class="li-enumerate">If the word on the page comes before the word you are looking for, flip to somewhere later in the dictionary and go to step 2.</li><li class="li-enumerate">If the word on the page comes after the word you are looking for, flip to somewhere earlier in the dictionary and go to step 2.</li></ol><p>This algorithm is much faster than sequential search, because it rules out half of the remaining words each time you make a comparison.
+If at any point you find two adjacent words on the page, and your word comes between them, you can conclude that your word is not in the dictionary.</p><p>Getting back to the array of cards, we can write this faster version of <code>search</code> if we know the cards are in order:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static int</span> binarySearch(Card[] cards, Card target) {
+    <span style="color:blue">int</span> low = 0;
+    <span style="color:blue">int</span> high = cards.length - 1;
+    <span style="color:blue">while</span> (low &lt;= high) {
+        <span style="color:blue">int</span> mid = (low + high) / 2;                 <span style="color:#007C00">// step 1</span>
+        <span style="color:blue">int</span> comp = cards[mid].compareTo(target);
+
+        <span style="color:blue">if</span> (comp == 0) {                            <span style="color:#007C00">// step 2</span>
+            <span style="color:blue">return</span> mid;
+        } <span style="color:blue">else if</span> (comp &lt; 0) {                      <span style="color:#007C00">// step 3</span>
+            low = mid + 1;
+        } <span style="color:blue">else</span> {                                    <span style="color:#007C00">// step 4</span>
+            high = mid - 1;
+        }
+    }
+    <span style="color:blue">return</span> -1;
+}</td></tr>
+</tbody></table><p>First, we declare <code>low</code> and <code>high</code> variables to represent the range we are searching.
+Initially we search the entire array, from <code>0</code> to <code>cards.length&nbsp;-&nbsp;1</code>.</p><p>Inside the <code><span style="color:blue">while</span></code> loop, we repeat the four steps of binary search:</p><ol class="enumerate" type="1"><li class="li-enumerate">Choose an index between <code>low</code> and <code>high</code> – call it <code>mid</code> – and compare the card at <code>mid</code> to the target.</li><li class="li-enumerate">If you found the target, return its index (which is <code>mid</code>).</li><li class="li-enumerate">If the card at <code>mid</code> is lower than the target, search the range from <code>mid&nbsp;+&nbsp;1</code> to <code>high</code>.</li><li class="li-enumerate">If the card at <code>mid</code> is higher than the target, search the range from <code>low</code> to <code>mid&nbsp;-&nbsp;1</code>.</li></ol><p>If <code>low</code> exceeds <code>high</code>, there are no cards in the range, so we terminate the loop and return <code>-1</code>.
+Notice that this algorithm only depends on the <code>compareTo</code> method of the object.
+We can apply this same code to any object that provides a <code>compareTo</code> method.</p>
+<h2 id="sec146" class="section">12.9&nbsp;&nbsp;Tracing the code<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec146" aria-label="Anchor link for: sec146" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item732"></a></p><p>To see how binary search works, it’s helpful to add the following print statement at the beginning of the loop:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">System.out.println(low + <span style="color:#B20000">", "</span> + high);</td></tr>
+</tbody></table><p>Using a sorted deck of cards, we can search for the “Jack of Clubs” like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Card card = <span style="color:blue">new</span> Card(11, 0);
+System.out.println(binarySearch(cards, card));</td></tr>
+</tbody></table><p>We expect to find this card at position 10 (since the “Ace of Clubs” is at position 0).
+Here is the output of <code>binarySearch</code>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">0, 51
+0, 24
+0, 11
+6, 11
+9, 11
+10</td></tr>
+</tbody></table><p>You can see the range of cards shrinking as the <code><span style="color:blue">while</span></code> loop runs, until eventually index 10 is found.
+If we search for a card that’s not in the array, like <code><span style="color:blue">new</span>&nbsp;Card(15,&nbsp;1)</code> the “15 of Diamonds”, we get the following:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">0, 51
+26, 51
+26, 37
+26, 30
+26, 27
+-1</td></tr>
+</tbody></table><p>Each time through the loop, we cut the distance between <code>low</code> and <code>high</code> in half.
+After <span style="font-style:italic">k</span> iterations, the number of remaining cards is 52 / 2<sup><span style="font-style:italic">k</span></sup>.
+To find the number of iterations it takes to complete, we set 52 / 2<sup><span style="font-style:italic">k</span></sup> = 1 and solve for <span style="font-style:italic">k</span>.
+The result is log<sub>2</sub> 52, which is about 5.7.
+So we might have to look at 5 or 6 cards, as opposed to all 52 if we did a sequential search.</p><p>More generally, if the array contains <span style="font-style:italic">n</span> elements, binary search requires log<sub>2</sub> <span style="font-style:italic">n</span> comparisons, and sequential search requires <span style="font-style:italic">n</span>.
+For large values of <span style="font-style:italic">n</span>, binary search can be much faster.</p>
+<h2 id="sec147" class="section">12.10&nbsp;&nbsp;Recursive version<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec147" aria-label="Anchor link for: sec147" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item733"></a></p><p>Another way to write a binary search is with a recursive method.
+The trick is to write a method that takes <code>low</code> and <code>high</code> as parameters, and turn steps 3 and 4 into recursive invocations.
+Here’s what that code looks like:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static int</span> binarySearch(Card[] cards, Card target,
+                               <span style="color:blue">int</span> low, <span style="color:blue">int</span> high) {
+    <span style="color:blue">if</span> (high &lt; low) {
+        <span style="color:blue">return</span> -1;
+    }
+    <span style="color:blue">int</span> mid = (low + high) / 2;                     <span style="color:#007C00">// step 1</span>
+    <span style="color:blue">int</span> comp = cards[mid].compareTo(target);
+
+    <span style="color:blue">if</span> (comp == 0) {                                <span style="color:#007C00">// step 2</span>
+        <span style="color:blue">return</span> mid;
+    } <span style="color:blue">else if</span> (comp &lt; 0) {                          <span style="color:#007C00">// step 3</span>
+        <span style="color:blue">return</span> binarySearch(cards, target, mid + 1, high);
+    } <span style="color:blue">else</span> {                                        <span style="color:#007C00">// step 4</span>
+        <span style="color:blue">return</span> binarySearch(cards, target, low, mid - 1);
+    }
+}</td></tr>
+</tbody></table><p>Instead of a <code><span style="color:blue">while</span></code> loop, we have an <code><span style="color:blue">if</span></code> statement to terminate the recursion.
+We call this <code><span style="color:blue">if</span></code> statement the base case.
+If <code>high</code> is less than <code>low</code>, there are no cards between them, and we conclude that the card is not in the array.</p><p><a id="item734"></a>
+<a id="item735"></a>
+<a id="item736"></a>
+<a id="item737"></a></p><p>Two common errors in recursive methods are (1) forgetting to include a base case, and (2) writing the recursive call so that the base case is never reached.
+Either error causes infinite recursion and a <code>StackOverflowError</code>.</p>
+<h2 id="sec148" class="section">12.11&nbsp;&nbsp;Vocabulary<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec148" aria-label="Anchor link for: sec148" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold">encode:</span></dt><dd class="dd-description"><a id="item738"></a>
+To represent one set of values using another set of values by constructing a mapping between them.</dd><dt class="dt-description"><span style="font-weight:bold">class variable:</span></dt><dd class="dd-description"><a id="item739"></a>
+A variable declared within a class as <code><span style="color:blue">static</span></code>.
+There is only one copy of a class variable, no matter how many objects there are.</dd><dt class="dt-description"><span style="font-weight:bold">sequential search:</span></dt><dd class="dd-description"><a id="item740"></a>
+An algorithm that searches array elements, one by one, until a target value is found.</dd><dt class="dt-description"><span style="font-weight:bold">binary search:</span></dt><dd class="dd-description"><a id="item741"></a>
+An algorithm that searches a sorted array by starting in the middle, comparing an element to the target, and eliminating half of the remaining elements.</dd></dl>
+<h2 id="sec149" class="section">12.12&nbsp;&nbsp;Exercises<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter12.html#sec149" aria-label="Anchor link for: sec149" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>The code for this chapter is in the <span style="font-family:monospace">ch12</span> directory of <span style="font-family:monospace">ThinkJavaCode2</span>.
+See page&nbsp;<a href="https://books.trinket.io/thinkjava2/preface.html#code">??</a> for instructions on how to download the repository.
+Before you start the exercises, we recommend that you compile and run the examples.</p><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;1</span>&nbsp;&nbsp; <p><em>Encapsulate the deck-building code from Section&nbsp;</em><a href="https://books.trinket.io/thinkjava2/chapter12.html#cardarray"><em>12.6</em></a><em> in a method called <code>makeDeck</code> that takes no parameters and returns a fully-populated array of <code>Card</code>s.</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;2</span>&nbsp;&nbsp; <p><em>In some card games, Aces are ranked higher than Kings.
+Modify the <code>compareTo</code> method to implement this ordering.</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;3</span>&nbsp;&nbsp; <p><em>In Poker a “flush” is a hand that contains five or more cards of the same suit.
+A hand can contain any number of cards.</em></p><p><a id="item742"></a></p><ol class="enumerate" type="1"><li class="li-enumerate"><em>Write a method called <code>suitHist</code> that takes an array of cards as a parameter and that returns a histogram of the suits in the hand.
+Your solution should only traverse the array once.</em></li><li class="li-enumerate"><em>Write a method called <code>hasFlush</code> that takes an array of cards as a parameter and returns <span style="color:blue"><code>true</code></span> if the hand contains a flush (and <span style="color:blue"><code>false</code></span> otherwise).</em></li></ol></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;4</span>&nbsp;&nbsp; <p><em>Working with cards is more interesting if you can display them on the screen.
+If you have not already read Appendix&nbsp;</em><a href="https://books.trinket.io/thinkjava2/appendix-c.html#graphics"><em>C</em></a><em> about 2D graphics, you should read it before working on this exercise.
+In the code directory for this chapter, <span style="font-family:monospace">ch12</span>, you will find:</em></p><ul class="itemize"><li class="li-itemize"><em><span style="font-family:monospace">cardset-oxymoron</span>: A directory containing images of playing cards.</em></li><li class="li-itemize"><em><span style="font-family:monospace">CardTable.java</span>: A sample program that demonstrates how to read and display images.</em></li></ul><p><a id="item743"></a></p><p><em>This code demonstrates the use of a 2D array, specifically an array of images.
+The declaration looks like this:</em></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><em><span style="color:blue">private</span> Image[][] images;</em></td></tr>
+</tbody></table><p><em>The variable <code>images</code> refers to a 2D array of <code>Image</code> objects, which are defined in the <code>java.awt</code> package.
+Here’s the code that creates the array itself:</em></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><em>images = <span style="color:blue">new</span> Image[14][4];</em></td></tr>
+</tbody></table><p><em>The array has 14 rows (one for each rank plus an unused row for rank 0) and 4 columns (one for each suit).
+Here’s the loop that populates the array:</em></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><em>String cardset = <span style="color:#B20000">"cardset-oxymoron"</span>;
+String suits = <span style="color:#B20000">"cdhs"</span>;
+
+<span style="color:blue">for</span> (<span style="color:blue">int</span> suit = 0; suit &lt;= 3; suit++) {
+    <span style="color:blue">char</span> c = suits.charAt(suit);
+
+    <span style="color:blue">for</span> (<span style="color:blue">int</span> rank = 1; rank &lt;= 13; rank++) {
+        String s = String.format(<span style="color:#B20000">"%s/%02d%c.gif"</span>,
+                                 cardset, rank, c);
+        images[rank][suit] = <span style="color:blue">new</span> ImageIcon(s).getImage();
+    }
+}</em></td></tr>
+</tbody></table><p><em>The variable <code>cardset</code> contains the name of the directory that contains the image files.
+<code>suits</code> is a string that contains the single-letter abbreviations for the suits.
+These strings are used to assemble <code>s</code>, which contains the filename for each image.
+For example, when <code>rank=1</code> and <code>suit=2</code>, the value of <code>s</code> is <span style="color:#B20000"><code>"cardset-oxymoron/01h.gif"</code></span>, which is an image of the Ace of Hearts.</em></p><p><em>The last line of the loop reads the image file, extracts an <code>Image</code> object, and assigns it to a location in the array, as specified by the indexes <code>rank</code> and <code>suit</code>.
+For example, the image of the Ace of Hearts is stored in row 1, column 2.</em></p><p><em>If you compile and run <span style="font-family:monospace">CardTable.java</span>, you should see images of a deck of cards laid out on a green table.
+You can use this class as a starting place to implement your own card games.</em></p></div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+<div class="bookcopyright">
+  <div class="row">
+    <div class="columns small-12">
+      <div>
+Text © Allen Downey and Chris Mayfield.  Interactive HTML © Trinket.  Both provided
+under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-NC-BY</a> license.  Think Java Second Edition version 6.6.0.
+</div>
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    
+
+  </div> <!-- end main-content-wrapper -->
+
+  
+    
+  
+
+  <div trinket-language=""></div>
+
+  
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    messageStyle : "none",
+    tex2jax      : {
+      inlineMath     : [['$(',')$'], ['\\(','\\)']],
+      ignoreClass    : "mathjax-ignore",
+      processEscapes : true
+    },
+    TeX          : {
+      extensions : ["[siunitx]/siunitx.js"]
+    }
+  });
+  MathJax.Ajax.config.path['siunitx']  = "/cache-prefix-b8de66a3/components/Mathjax-siunitx";
+  </script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/jquery-ui.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/angular-route.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/restangular.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/marked.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/highlight.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/ace.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/foundation.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/flash.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/trinket.js(1).download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/aes.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/roles.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/join-course.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/courses.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/cache.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/gallery.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/debug.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/ng-text-select.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/text-select.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/trinket-share.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/trinket-groups.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/notify.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/angular-aria.min.js.download"></script>
+  
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/angular-file-upload.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/mm-foundation-tpls.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/angular-notifyjs.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/moment.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/moment-timezone-with-data.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/angular-moment.min.js.download"></script>
+  
+    <script src="./Arrays of objects _ Think Java _ Trinket_files/app.min.js.download"></script>
+  
+
+  
+  <script>$(document).foundation()</script>
+  
+
+  <script>
+      $(document).on('open', '#newTrinketModal', function() {
+        $('.has-dropdown').removeClass('hover');
+      });
+      $('*[data-auth-init]').click(function(event) {
+        event.preventDefault();
+        var href     = $(this).attr('href');
+        var provider = $(this).data('auth-init');
+        ga('send', 'event', provider + ' Auth', 'Started', window.location.pathname, {
+          'hitCallback' : function() {
+            window.location.href = href;
+          }
+        });
+      });
+      
+
+      $.notify.addStyle('foundation', {
+        html : '<div><span data-notify-html></span></div>'
+      });
+      $.notify.defaults({
+          position  : 'bottom center'
+        , arrowShow : false
+        , style     : 'foundation'
+        , gap       : 0
+      });
+  </script>
+  
+<script type="text/javascript" scr="/cache-prefix-b8de66a3/components/foundation/js/foundation/foundation.topbar.js"></script>
+<script src="./Arrays of objects _ Think Java _ Trinket_files/lazysizes.min.js.download"></script>
+<script src="./Arrays of objects _ Think Java _ Trinket_files/anchor.min.js.download"></script>
+<script>
+    anchors.add('h2:not(.no-anchor)');
+    anchors.add('.anchor')
+    anchors.remove('.no-anchor');
+</script>
+
+  
+
+
+
+
+  
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 970987464;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<div style="display:none">
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+</div>
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/970987464/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+  
+
+
+  
+<script src="https://platform.twitter.com/oct.js" type="text/javascript" async="true"></script>
+    
+      
+  
+<script type="text/javascript">
+twttr.conversion.trackPid('l4kgy', { tw_sale_amount: 0, tw_order_quantity: 0 });</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4kgy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4kgy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" /></noscript>
+  
+
+    
+    
+  
+
+
+<script type="text/javascript">
+$(document).on('click', '.contact-us-link', function(event) {
+  if (typeof(Intercom) !== "undefined") {
+    event.preventDefault();
+    Intercom('showNewMessage');
+  }
+});
+</script>
+
+
+
+
+
+</div></body></html>

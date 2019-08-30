@@ -4,6 +4,8 @@
 
 This repository is made to keep track of my progress while following p1xt's guide. My intention is to use this as a complement for my Computer Science Diploma followed by a Computer Science-Software Engineering degree. 
 
+Honestly, there is one big problem: Opportunity cost. I find it personally quite difficult to balance a full-time diploma (leading to degree) with this rigorous course designed to replace a degree. Therefore, there are corners to be cut, unfortunately. For some parts, I have considered education from TARUC with a nearly-same subject title to be a replacement.
+
 ## Goal
 
 - To be able to develop more difficult programs. Spending hours to solve a trivial problem is not good and I need to improve.
@@ -64,8 +66,8 @@ It has a plethora of hints, tips and answers to help you ensure you get the most
 * [x] Course: [How to Code: Simple Data](https://www.edx.org/course/how-code-simple-data-ubcx-htc1x)
 * [ ] Project: [Google Code Jam 2010 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
   * [ ] Skipped due to insufficient time, returning later
-* [ ] Book: [Precalculus](http://www.stitz-zeager.com/szprecalculus07042013.pdf)
-  * [ ] Skipped due to insufficient time, returning later
+* [x] Book: [Precalculus](http://www.stitz-zeager.com/szprecalculus07042013.pdf)
+  * [x] Replaced with TARUC's Precalculus course.
 * [x] Course: [How to Code: Complex Data](https://www.edx.org/course/how-code-complex-data-ubcx-htc2x)
 * [ ] Project: [Google Code Jam 2011 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
   * [ ] Skipped due to insufficient time, returning later
@@ -76,6 +78,7 @@ It has a plethora of hints, tips and answers to help you ensure you get the most
 * [x] Course: [Single Variable Calculus](https://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/)
   * [x] Replaced with Professor Leonard Calculus 1 videos
 * [ ] Book: [Think Java - How to Think Like a Computer Scientist](http://greenteapress.com/wp/think-java/)
+  * [x] In progress
 * [ ] Project: [Google Code Jam 2009 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Course: [Software Construction: Data Abstraction](https://www.edx.org/course/software-construction-data-abstraction-ubcx-softconst1x)
 * [ ] Project: [Google Code Jam 2010 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)

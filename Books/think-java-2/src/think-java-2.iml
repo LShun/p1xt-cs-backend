@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/chapter-1-computer-programming" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter-2-vars-and-op" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter-3-io" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter-4-methods-and-testing" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter-5-conditions-loops" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter-6-loops-strings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chapter-7-array-references" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/c8-recursive-methods" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c1-computer-programming" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c2-vars-and-op" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c3-io" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c4-methods-and-testing" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c5-conditions-loops" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c6-loops-strings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c7-array-references" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c9-immutable-objects" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c10-mutable-objects" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c11-designing-class" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c12-array-of-objects" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ac-graphics" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c13-objects-of-arrays" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/c14-extending-classes" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" scope="TEST">
+      <library name="JUnit5.3">
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.5.1/junit-jupiter-api-5.5.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.5.1/junit-platform-commons-1.5.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://books.trinket.io/thinkjava2/chapter11.html -->
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta class="foundation-mq-small"><meta class="foundation-mq-small-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-large"><meta class="foundation-mq-large-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xxlarge"><meta class="foundation-data-attribute-namespace"><style class="anchorjs"></style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+  
+  
+  <title>Designing classes | Think Java | Trinket</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  
+  <link rel="icon" href="https://books.trinket.io/img/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-144x144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-114x114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-72x72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="https://books.trinket.io/cache-prefix-5340c6b8/img/icons/apple-touch-icon-precomposed.png">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Designing classes _ Think Java _ Trinket_files/github.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Designing classes _ Think Java _ Trinket_files/font-awesome.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Designing classes _ Think Java _ Trinket_files/video-js.min.css">
+  
+    <link rel="stylesheet" type="text/css" media="all" href="./Designing classes _ Think Java _ Trinket_files/base.css">
+  
+  
+
+  <script async="" src="./Designing classes _ Think Java _ Trinket_files/fbevents.js.download"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
+    trinket = {
+      config : {
+        apphostname    : 'trinket.io',
+        usersubdomains : true,
+        protocol       : 'https',
+        addthisurl     : '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5344021135dae100',
+        cachePrefix    : 'cache-prefix-',
+        prefixes       : {"components":"cache-prefix-b8de66a3","js":"cache-prefix-5340c6b8","css":"cache-prefix-5340c6b8","img":"cache-prefix-5340c6b8","fonts":"cache-prefix-5340c6b8","partials":"cache-prefix-5340c6b8","skulpt":"321e8852","pypyjs":"cache-prefix-e8e5bcf1"},
+        components     : {"ace-builds":"v1.2.6.1rc2","anchor-js":"2.0.0","angular-file-saver":"1.1.3","angular-load":"0.1.2","angular-notifyjs":"0.1.0","angular-ui-router":"0.2.11","angular-ui-tree":"2.0.10","angular-ui-utils":"0.1.1","angular-xeditable":"0.1.8","bluebird":"3.5.1","d3":"3.4.11","filereader":"107f68c3b9","file-saver.js":"1.20150507.2","font-mfizz":"2.0.1","gsap":"1.15.0","jquery-ui":"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1","jsdiff":"1.0.8","jszip":"3.1.4","lazysizes":"1.5.0","lodash":"2.4.1","modernizr":"2.7.2","ng-file-upload":"1.2.6","ngInfiniteScroll":"1.1.2","notifyjs":"0.4.2","opal":"0.6.2","restangular":"1.3.1","speakingurl":"1.1.5","video.js":"5.20.4","yamljs":"0.1.5"},
+        vendorHost     : 'https://trinket-vendor-assets.trinket.io',
+        trinketTypes   : [
+          { lang : 'python',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Python'                                     },
+          { lang : 'python3',    image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Python3', icon : 'trinket-key logo premium' },
+          { lang : 'pygame',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/python.png',     label : 'Pygame', icon : 'trinket-key logo premium' },
+          { lang : 'java',       image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/java.png',       label : 'Java',    icon : 'trinket-key logo premium' },
+          { lang : 'R',          image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/R.png',          label : 'R',       icon : 'trinket-key logo premium' },
+          { lang : 'blocks',     image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/blocks.png',     label : 'Blocks'                                     },
+          { lang : 'html',       image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/html.png',       label : 'HTML'                                       },
+          { lang : 'glowscript', image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/glowscript.png', label : 'GlowScript'                                 },
+          { lang : 'music',      image : 'https://ee5817f8e2e9a2e34042-3365e7f0719651e5b8d0979bce83c558.ssl.cf5.rackcdn.com/music.png',      label : 'Music'                                      }
+        ],
+        autorun           : ["python","glowscript","blocks","python3","java","glowscript-blocks","R"],
+        outputOnly        : ["python","html","glowscript","blocks","python3","pygame","java","glowscript-blocks","R"],
+        toggleCode        : ["python","html","glowscript","blocks","python3","pygame","java","glowscript-blocks","R"],
+        downloadable      : ["python","html","python3","pygame","java","blocks","glowscript-blocks","R","pygame"],
+        uploadable        : ["blocks","glowscript-blocks"],
+        hideGeneratedCode : ["blocks","glowscript-blocks"],
+        runOption         : {"python":["run","console"],"python3":["run","console"],"R":["run","console"]},
+        plans             : [{ "connect"  : "Connect"  },
+                             { "codeplus" : "Code+" }]
+      }
+    };
+  </script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/modernizr.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/lodash.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/jquery.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/angular.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/trinket.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/trinket-config.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/trinket-roles.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/template.js.download"></script>
+  
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46899028-1', 'trinket.io');
+  
+  ga('set', 'dimension2', 'trinket');
+  
+  ga('send', 'pageview');
+
+  
+
+</script>
+
+  
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1441353372787187'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1441353372787187&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+  
+
+
+  
+<style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style></style><style type="text/css" id="notify-bootstrap">.notifyjs-bootstrap-base {
+	font-weight: bold;
+	padding: 8px 15px 8px 14px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	white-space: nowrap;
+	padding-left: 25px;
+	background-repeat: no-repeat;
+	background-position: 3px 7px;
+}
+.notifyjs-bootstrap-error {
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border-color: #EED3D7;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAtRJREFUeNqkVc1u00AQHq+dOD+0poIQfkIjalW0SEGqRMuRnHos3DjwAH0ArlyQeANOOSMeAA5VjyBxKBQhgSpVUKKQNGloFdw4cWw2jtfMOna6JOUArDTazXi/b3dm55socPqQhFka++aHBsI8GsopRJERNFlY88FCEk9Yiwf8RhgRyaHFQpPHCDmZG5oX2ui2yilkcTT1AcDsbYC1NMAyOi7zTX2Agx7A9luAl88BauiiQ/cJaZQfIpAlngDcvZZMrl8vFPK5+XktrWlx3/ehZ5r9+t6e+WVnp1pxnNIjgBe4/6dAysQc8dsmHwPcW9C0h3fW1hans1ltwJhy0GxK7XZbUlMp5Ww2eyan6+ft/f2FAqXGK4CvQk5HueFz7D6GOZtIrK+srupdx1GRBBqNBtzc2AiMr7nPplRdKhb1q6q6zjFhrklEFOUutoQ50xcX86ZlqaZpQrfbBdu2R6/G19zX6XSgh6RX5ubyHCM8nqSID6ICrGiZjGYYxojEsiw4PDwMSL5VKsC8Yf4VRYFzMzMaxwjlJSlCyAQ9l0CW44PBADzXhe7xMdi9HtTrdYjFYkDQL0cn4Xdq2/EAE+InCnvADTf2eah4Sx9vExQjkqXT6aAERICMewd/UAp/IeYANM2joxt+q5VI+ieq2i0Wg3l6DNzHwTERPgo1ko7XBXj3vdlsT2F+UuhIhYkp7u7CarkcrFOCtR3H5JiwbAIeImjT/YQKKBtGjRFCU5IUgFRe7fF4cCNVIPMYo3VKqxwjyNAXNepuopyqnld602qVsfRpEkkz+GFL1wPj6ySXBpJtWVa5xlhpcyhBNwpZHmtX8AGgfIExo0ZpzkWVTBGiXCSEaHh62/PoR0p/vHaczxXGnj4bSo+G78lELU80h1uogBwWLf5YlsPmgDEd4M236xjm+8nm4IuE/9u+/PH2JXZfbwz4zw1WbO+SQPpXfwG/BBgAhCNZiSb/pOQAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-success {
+	color: #468847;
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+}
+.notifyjs-bootstrap-info {
+	color: #3A87AD;
+	background-color: #D9EDF7;
+	border-color: #BCE8F1;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QYFAhkSsdes/QAAA8dJREFUOMvVlGtMW2UYx//POaWHXg6lLaW0ypAtw1UCgbniNOLcVOLmAjHZolOYlxmTGXVZdAnRfXQm+7SoU4mXaOaiZsEpC9FkiQs6Z6bdCnNYruM6KNBw6YWewzl9z+sHImEWv+vz7XmT95f/+3/+7wP814v+efDOV3/SoX3lHAA+6ODeUFfMfjOWMADgdk+eEKz0pF7aQdMAcOKLLjrcVMVX3xdWN29/GhYP7SvnP0cWfS8caSkfHZsPE9Fgnt02JNutQ0QYHB2dDz9/pKX8QjjuO9xUxd/66HdxTeCHZ3rojQObGQBcuNjfplkD3b19Y/6MrimSaKgSMmpGU5WevmE/swa6Oy73tQHA0Rdr2Mmv/6A1n9w9suQ7097Z9lM4FlTgTDrzZTu4StXVfpiI48rVcUDM5cmEksrFnHxfpTtU/3BFQzCQF/2bYVoNbH7zmItbSoMj40JSzmMyX5qDvriA7QdrIIpA+3cdsMpu0nXI8cV0MtKXCPZev+gCEM1S2NHPvWfP/hL+7FSr3+0p5RBEyhEN5JCKYr8XnASMT0xBNyzQGQeI8fjsGD39RMPk7se2bd5ZtTyoFYXftF6y37gx7NeUtJJOTFlAHDZLDuILU3j3+H5oOrD3yWbIztugaAzgnBKJuBLpGfQrS8wO4FZgV+c1IxaLgWVU0tMLEETCos4xMzEIv9cJXQcyagIwigDGwJgOAtHAwAhisQUjy0ORGERiELgG4iakkzo4MYAxcM5hAMi1WWG1yYCJIcMUaBkVRLdGeSU2995TLWzcUAzONJ7J6FBVBYIggMzmFbvdBV44Corg8vjhzC+EJEl8U1kJtgYrhCzgc/vvTwXKSib1paRFVRVORDAJAsw5FuTaJEhWM2SHB3mOAlhkNxwuLzeJsGwqWzf5TFNdKgtY5qHp6ZFf67Y/sAVadCaVY5YACDDb3Oi4NIjLnWMw2QthCBIsVhsUTU9tvXsjeq9+X1d75/KEs4LNOfcdf/+HthMnvwxOD0wmHaXr7ZItn2wuH2SnBzbZAbPJwpPx+VQuzcm7dgRCB57a1uBzUDRL4bfnI0RE0eaXd9W89mpjqHZnUI5Hh2l2dkZZUhOqpi2qSmpOmZ64Tuu9qlz/SEXo6MEHa3wOip46F1n7633eekV8ds8Wxjn37Wl63VVa+ej5oeEZ/82ZBETJjpJ1Rbij2D3Z/1trXUvLsblCK0XfOx0SX2kMsn9dX+d+7Kf6h8o4AIykuffjT8L20LU+w4AZd5VvEPY+XpWqLV327HR7DzXuDnD8r+ovkBehJ8i+y8YAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-warn {
+	color: #C09853;
+	background-color: #FCF8E3;
+	border-color: #FBEED5;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABJlBMVEXr6eb/2oD/wi7/xjr/0mP/ykf/tQD/vBj/3o7/uQ//vyL/twebhgD/4pzX1K3z8e349vK6tHCilCWbiQymn0jGworr6dXQza3HxcKkn1vWvV/5uRfk4dXZ1bD18+/52YebiAmyr5S9mhCzrWq5t6ufjRH54aLs0oS+qD751XqPhAybhwXsujG3sm+Zk0PTwG6Shg+PhhObhwOPgQL4zV2nlyrf27uLfgCPhRHu7OmLgAafkyiWkD3l49ibiAfTs0C+lgCniwD4sgDJxqOilzDWowWFfAH08uebig6qpFHBvH/aw26FfQTQzsvy8OyEfz20r3jAvaKbhgG9q0nc2LbZxXanoUu/u5WSggCtp1anpJKdmFz/zlX/1nGJiYmuq5Dx7+sAAADoPUZSAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfdBgUBGhh4aah5AAAAlklEQVQY02NgoBIIE8EUcwn1FkIXM1Tj5dDUQhPU502Mi7XXQxGz5uVIjGOJUUUW81HnYEyMi2HVcUOICQZzMMYmxrEyMylJwgUt5BljWRLjmJm4pI1hYp5SQLGYxDgmLnZOVxuooClIDKgXKMbN5ggV1ACLJcaBxNgcoiGCBiZwdWxOETBDrTyEFey0jYJ4eHjMGWgEAIpRFRCUt08qAAAAAElFTkSuQmCC);
+}
+</style><meta class="foundation-mq-topbar"><meta class="foundation-mq-topbar"><meta class="foundation-mq-small"><meta class="foundation-mq-medium"><meta class="foundation-mq-large"><style type="text/css" id="core-notify">.notifyjs-corner {
+	position: fixed;
+	margin: 5px;
+	z-index: 1050;
+}
+
+.notifyjs-corner .notifyjs-wrapper,
+.notifyjs-corner .notifyjs-container {
+	position: relative;
+	display: block;
+	height: inherit;
+	width: inherit;
+	margin: 3px;
+}
+
+.notifyjs-wrapper {
+	z-index: 1;
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+.notifyjs-container {
+	display: none;
+	z-index: 1;
+	position: absolute;
+}
+
+.notifyjs-hidable {
+	cursor: pointer;
+}
+
+[data-notify-text],[data-notify-html] {
+	position: relative;
+}
+
+.notifyjs-arrow {
+	position: absolute;
+	z-index: 2;
+	width: 0;
+	height: 0;
+}</style></head>
+<body ng-app="trinket.main" id="think-java" class="loggedin  ng-scope f-topbar-fixed">
+
+  
+
+  <!-- for positioning footer at bottom of screen on short pages -->
+  <div class="main-content-wrapper">
+
+  <input id="whoami" type="hidden" value="ghirda">
+  
+  
+    <div class="nav-wrapper">
+      <nav class="top-bar" data-topbar="" data-options="is_hover: false" role="navigation" aria-label="Main Navigation">
+        <ul class="title-area">
+          <li class="name">
+            <a href="https://trinket.io/" role="button" aria-label="Index Page">
+              <img src="./Designing classes _ Think Java _ Trinket_files/trinket-logo.png" alt="Trinket helps you teach with code">
+            </a>
+            
+              
+              <a href="https://books.trinket.io/plans"><span class="radius code-label">Code</span></a>
+              
+            
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="https://books.trinket.io/thinkjava2/chapter11.html#"><span></span></a></li>
+        </ul>
+        
+      <section class="top-bar-section">
+          
+          <ul>
+            <li><a href="https://trinket.io/home" aria-label="Go Home"><i class="fa fa-home"></i> Home </a>
+          </li></ul>
+          
+          <ul class="right">
+            
+            <li><a href="https://trinket.io/plans"><i class="fa fa-star"></i> <span><span class="show-for-large-up">Plans</span></span></a></li>
+            <li><a href="https://hourofpython.com/"><i class="fa fa-graduation-cap"></i> <span><span class="show-for-large-up">Learn</span></span></a></li>
+            <li><a href="https://trinket.io/help"><i class="fa fa-question-circle"></i> <span><span class="show-for-large-up">Help</span></span></a></li>
+            
+            
+              <li class="has-dropdown" role="navigation">
+                <a class="dropdown-btn" role="button" aria-controls="user_dropdown" aria-label="Open User Menu">
+                  <img id="nav-user-avatar" src="./Designing classes _ Think Java _ Trinket_files/avatar-default.png" alt="Photo of ghirda" class="avatar">
+                  <span id="userdata" data-user-id="5d1c8055bf396f8f5ae05dc5">ghirda</span>
+                </a>
+                <ul id="user_dropdown" class="dropdown" role="menu" aria-label="User Menu"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+                  <li role="menuitem">
+                    <a href="https://trinket.io/home">
+                      <i class="fa fa-home"></i> Home
+                    </a>
+                  </li>
+                  <li class="divider" role="presentation"></li>
+                  <li role="menuitem">
+                    <a href="https://trinket.io/library/trinkets">
+                      My Trinkets
+                    </a>
+                  </li>
+                  <li class="has-dropdown" role="menuitem">
+                    <a role="button" aria-controls="new_trinket_list">New Trinket</a>
+                    <ul id="new_trinket_list" class="dropdown" role="group"><li class="title back js-generated"><h5><a href="javascript:void(0)">Back</a></h5></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=python"><i class="lang-sprite lang-sprite-python"></i> Python</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=python3"><i class="lang-sprite lang-sprite-python"></i> Python3 <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=pygame"><i class="lang-sprite lang-sprite-pygame"></i> Pygame <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=R"><i class="lang-sprite lang-sprite-R"></i> R <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=blocks"><i class="lang-sprite lang-sprite-blocks"></i> Blocks</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=html"><i class="lang-sprite lang-sprite-html"></i> HTML</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=glowscript"><i class="lang-sprite lang-sprite-glowscript"></i> GlowScript</a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=java"><i class="lang-sprite lang-sprite-java"></i> Java <i class="trinket-key logo premium"></i></a></li>
+                      <li><a href="https://trinket.io/library/trinkets/create?lang=music"><i class="lang-sprite lang-sprite-music"></i> Music</a></li>
+                    </ul>
+                  </li>
+                  <li class="divider" role="presentation"></li>
+                  <li><a href="https://trinket.io/account"><i class="fa fa-gear"></i> My Settings</a></li>
+                  
+                  <li class="divider" role="presentation"></li>
+                  <li><a href="https://trinket.io/help">Help</a></li>
+                  <li><a href="https://trinket.io/contact">Contact Us</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="https://trinket.io/logout">
+                  <i class="fa fa-sign-out"></i> Sign Out
+                </a>
+              </li>
+            
+          </ul>
+        </section></nav>
+    </div>
+  
+
+  
+  
+  
+
+  <section id="main-content" role="main">
+    
+<div class="booktoc contain-to-grid sticky fixed">
+  <nav class="top-bar" data-topbar="" role="navigation">
+
+
+    <ul class="title-area">
+        <li class="name">
+          <h1><a href="https://books.trinket.io/thinkjava2/index.html">Think Java 2<span class="draft-label label round">Draft</span></a> </h1>
+        </li>
+        <li class="toggle-topbar"><a href="https://books.trinket.io/thinkjava2/chapter11.html"><span>Menu</span></a></li>
+
+      </ul>
+
+
+  
+  
+<section class="top-bar-section">
+    <ul class="left books-back-button">
+      <li>
+        <a href="https://books.trinket.io/">
+          <i class="fa fa-angle-left"></i> All Textbooks
+        </a>
+      </li>
+    </ul>
+  </section><section class="top-bar-section">
+
+
+    <ul class="left">
+        <li class="has-dropdown not-click">
+          <a href="https://books.trinket.io/thinkjava2/chapter11.html#">Chapters</a>
+          <ul class="dropdown">
+            <li><a href="https://books.trinket.io/thinkjava2/index.html">See All Chapters</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/preface.html">Preface</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter1.html">Chapter 1: Computer programming</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter2.html">Chapter 2: Variables and Operators</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter3.html">Chapter 3: Input and Output</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter4.html">Chapter 4: Methods and Testing</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter5.html">Chapter 5: Conditionals and Logic</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter6.html">Chapter 6: Loops and Strings</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter7.html">Chapter 7: Arrays and References</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter8.html">Chapter 8: Recursive Methods</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter9.html">Chapter 9: Immutable Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter10.html">Chapter 10: Mutable Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter11.html">Chapter 11: Designing Classes</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter12.html">Chapter 12: Arrays of Objects</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter13.html">Chapter 13: Objects of Arrays</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/chapter14.html">Chapter 14: Extending Classes</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-a.html">Appendix A: Tools</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-b.html">Appendix B: Javadoc</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-c.html">Appendix C: Graphics</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-d.html">Appendix D: Debugging</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/appendix-e.html">Appendix E: Extras</a></li>
+            <li><a href="https://books.trinket.io/thinkjava2/book-index.html">Index</a></li>
+          </ul>
+        </li>
+    </ul>
+
+
+
+<ul class="right"><li class="has-dropdown not-click"><a href="https://books.trinket.io/thinkjava2/chapter11.html">Designing classes</a>
+<ul class="dropdown">
+<li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec126">The Time class</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec127">Constructors</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec128">More constructors</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec129">Getters and setters</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec130">Displaying objects</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec131">The toString method</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec132">The equals method</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec133">Adding times</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec134">Pure methods</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec135">Vocabulary</a>
+</li><li><a href="https://books.trinket.io/thinkjava2/chapter11.html#sec136">Exercises</a>
+</li></ul>
+</li></ul>
+
+
+  </section></nav></div>
+
+<div class="bookchapter">
+
+
+<div class="row">
+<div class="columns small-12">
+
+
+      <div class="row">
+        <div class="columns small-12"><h1 id="sec125" class="chapter">Chapter&nbsp;11&nbsp;&nbsp;Designing classes</h1>
+<p><a id="item592"></a>
+<a id="item593"></a></p><p>Whenever you create a new class, you are creating a new object type with the same name.
+So way back in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter1.html#hello">1.3</a>, when we had the class <code>Hello</code>, we also had an object type named <code>Hello</code>.
+We didn’t declare any variables with type <code>Hello</code>, and we didn’t use <code><span style="color:blue">new</span></code> to create a <code>Hello</code> object.
+It wouldn’t have done much good if we had – but we could have!</p><p>In this chapter, you will learn to design classes that represent <em>useful</em> objects.
+Think of a class like a blueprint for a house: you can use the same blueprint to build any number of houses.</p><p>Beginners often confuse the difference between classes and objects.
+Here are the main ideas:</p><ul class="itemize"><li class="li-itemize"><p><a id="item594"></a></p>A <span style="font-weight:bold">class</span> definition is a template for objects: it specifies what attributes the objects have and what methods can operate on them.<p><a id="item595"></a></p></li><li class="li-itemize">Every object belongs to some object type; that is, it is an <span style="font-weight:bold">instance</span> of some class.<p><a id="item596"></a></p></li><li class="li-itemize">The <code><span style="color:blue">new</span></code> operator <span style="font-weight:bold">instantiates</span> objects, that is, it creates new instances of a class.</li><li class="li-itemize">The design of a class (what methods it has) determines whether the objects are mutable or immutable.</li></ul>
+<h2 id="sec126" class="section">11.1&nbsp;&nbsp;The Time class<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec126" aria-label="Anchor link for: sec126" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item597"></a>
+<a id="item598"></a></p><p>One common reason to define a new class is to encapsulate related data in an object that can be treated as a single unit.
+That way, we can use objects as parameters and return values, rather than passing and returning multiple values.
+We have already seen two types that encapsulate data in this way: <code>Point</code> and <code>Rectangle</code>.</p><p><a id="item599"></a>
+<a id="item600"></a></p><p>Another example, which we will implement ourselves, is <code>Time</code>, which represents a time of day.
+The data encapsulated in a <code>Time</code> object include an hour, a minute, and a number of seconds.
+Because every <code>Time</code> object contains these data, we define attributes to hold them.</p><p><a id="item601"></a>
+<a id="item602"></a></p><p>Attributes are also called <span style="font-weight:bold">instance variables</span>, because each instance has its own variables (as opposed to class variables, coming up in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter12.html#classvar">12.3</a>).</p><p>The first step is to decide what type each variable should be.
+It seems clear that <code>hour</code> and <code>minute</code> should be integers.
+Just to keep things interesting, let’s make <code>second</code> a double.</p><p>Instance variables are declared at the beginning of the class definition, outside of any method.
+By itself, this code fragment is a legal class definition:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public class</span> Time {
+    <span style="color:blue">private int</span> hour;
+    <span style="color:blue">private int</span> minute;
+    <span style="color:blue">private double</span> second;
+}</td></tr>
+</tbody></table><p><a id="item603"></a>
+<a id="item604"></a></p><p>The <code>Time</code> class is <code><span style="color:blue">public</span></code>, which means that it can be used in other classes.
+But the instance variables are <code><span style="color:blue">private</span></code>, which means they can only be accessed from inside the <code>Time</code> class.
+If you try to read or write them from another class, you will get a compiler error.</p><p><a id="item605"></a></p><p>Private instance variables help keep classes isolated from each other so that changes in one class won’t require changes in other classes.
+It also simplifies what other programmers need to understand in order to use your classes.
+This kind of isolation is called <span style="font-weight:bold">information hiding</span>.</p>
+<h2 id="sec127" class="section">11.2&nbsp;&nbsp;Constructors<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec127" aria-label="Anchor link for: sec127" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item606"></a>
+<a id="item607"></a></p><p>After declaring instance variables, the next step is to define a <span style="font-weight:bold">constructor</span>, which is a special method that initializes the object.
+The syntax for constructors is similar to that of other methods, except:</p><p><a id="item608"></a></p><ul class="itemize"><li class="li-itemize">
+The name of the constructor is the same as the name of the class.
+</li><li class="li-itemize">Constructors have no return type (and no return value).
+</li><li class="li-itemize">The keyword <code><span style="color:blue">static</span></code> is omitted.
+</li></ul><p>Here is an example constructor for the <code>Time</code> class:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Time() {
+    <span style="color:blue">this</span>.hour = 0;
+    <span style="color:blue">this</span>.minute = 0;
+    <span style="color:blue">this</span>.second = 0.0;
+}</td></tr>
+</tbody></table><p>This constructor does not take any arguments.
+Each line initializes an instance variable to zero (which in this example means midnight).</p><p><a id="item609"></a>
+<a id="item610"></a></p><p>The name <code><span style="color:blue">this</span></code> is a keyword that refers to the object we are creating.
+You can use <code><span style="color:blue">this</span></code> the same way you use the name of any other object.
+For example, you can read and write the instance variables of <code><span style="color:blue">this</span></code>, and you can pass <code><span style="color:blue">this</span></code> as an argument to other methods.
+But you do not declare <code><span style="color:blue">this</span></code>, and you can’t make an assignment to it.</p><p>A common error when writing constructors is to put a <code><span style="color:blue">return</span></code> statement at the end.
+Like <code><span style="color:blue">void</span></code> methods, constructors do not return values.</p><p>To create a <code>Time</code> object, you must use the <code><span style="color:blue">new</span></code> operator:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static void</span> main(String[] args) {
+    Time time = <span style="color:blue">new</span> Time();
+}</td></tr>
+</tbody></table><p><a id="item611"></a>
+<a id="item612"></a></p><p>When you use <code><span style="color:blue">new</span></code>, Java creates the object and invokes your constructor to initialize the instance variables.
+When the constructor is done, <code><span style="color:blue">new</span></code> returns a reference to the new object.
+In this example, the reference gets assigned to the variable <code>time</code>, which has type <code>Time</code>.
+Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter11.html#fig.time">11.1</a> shows the result.</p><p><a id="item613"></a>
+<a id="item614"></a></p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Designing classes _ Think Java _ Trinket_files/thinkjava7034.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 11.1: Memory diagram of a <code>Time</code> object.</td></tr>
+</tbody></table></div>
+<a id="fig.time"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p><a id="item615"></a>
+<a id="item616"></a>
+<a id="item617"></a></p><p>Beginners sometimes make the mistake of using <code><span style="color:blue">new</span></code> in the constructor.
+Doing so causes an infinite recursion, since <code><span style="color:blue">new</span></code> invokes the same constructor, which uses <code><span style="color:blue">new</span></code> again, which invokes the constructor again, and so on.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Time() {
+    <span style="color:blue">new</span> Time();         <span style="color:#007C00">// StackOverflowError</span>
+    <span style="color:blue">this</span>.hour = 0;
+    <span style="color:blue">this</span>.minute = 0;
+    <span style="color:blue">this</span>.second = 0.0;
+}</td></tr>
+</tbody></table>
+<h2 id="sec128" class="section">11.3&nbsp;&nbsp;More constructors<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec128" aria-label="Anchor link for: sec128" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item618"></a></p><p>Like other methods, constructors can be overloaded, which means you can provide multiple constructors with different parameters.
+Java knows which constructor to invoke by matching the arguments you provide with the parameters of the constructor.</p><p><a id="item619"></a>
+<a id="item620"></a></p><p>It is common to provide a constructor that takes no arguments, like the previous one, and a “value constructor”, like this one:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Time(<span style="color:blue">int</span> hour, <span style="color:blue">int</span> minute, <span style="color:blue">double</span> second) {
+    <span style="color:blue">this</span>.hour = hour;
+    <span style="color:blue">this</span>.minute = minute;
+    <span style="color:blue">this</span>.second = second;
+}</td></tr>
+</tbody></table><p><a id="item621"></a></p><p>All this constructor does is copy values from the parameters to the instance variables.
+In this example, the names and types of the parameters are the same as the instance variables.
+As a result, the parameters <span style="font-weight:bold">shadow</span> (or hide) the instance variables, so the keyword <code><span style="color:blue">this</span></code> is necessary to tell them apart.
+Parameters don’t have to use the same names, but that’s a common style.</p><p>To invoke this second constructor, you have to provide arguments after the <code><span style="color:blue">new</span></code> operator.
+This example creates a <code>Time</code> object that represents a fraction of a second before noon:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Time time = <span style="color:blue">new</span> Time(11, 59, 59.9);</td></tr>
+</tbody></table><p>Overloading constructors provides the flexibility to create an object first and then fill in the attributes, or collect all the information before creating the object itself.</p><p>Once you get the hang of it, writing constructors gets boring.
+You can write them quickly just by looking at the list of instance variables.
+In fact, some IDEs can generate them for you.</p><p>Pulling it all together, here is the complete class definition so far:</p><p><a id="item622"></a></p><p><script type="text/javascript">(function(d,l,s,i,c){function n(e){e=e.nextSibling;return (!e||e.nodeType!=3)?e:n(e);};function r(f){/in/.test(d.readyState) ? setTimeout(function(){r(f);},9):f()};l=d.getElementsByTagName('script');s=l[l.length-1];r(function(){i=n(s),c=n(i);i.setAttribute('data-src','https://trinket.io/tools/1.0/jekyll/embed/java#code='+encodeURIComponent(c.nodeValue.replace(/^\s+|\s+$/g,'')));});})(document)</script><iframe width="100%" height="400" frameborder="0" marginwidth="0" marginheight="0" class=" lazyloaded" allowfullscreen="" data-src="https://trinket.io/tools/1.0/jekyll/embed/java#code=----%7BTime.java%7D----%0Apublic%20class%20Time%20%7B%0A%20%20%20%20private%20int%20hour%3B%0A%20%20%20%20private%20int%20minute%3B%0A%20%20%20%20private%20double%20second%3B%0A%0A%20%20%20%20public%20Time()%20%7B%0A%20%20%20%20%20%20%20%20this.hour%20%3D%200%3B%0A%20%20%20%20%20%20%20%20this.minute%20%3D%200%3B%0A%20%20%20%20%20%20%20%20this.second%20%3D%200.0%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20public%20Time(int%20hour%2C%20int%20minute%2C%20double%20second)%20%7B%0A%20%20%20%20%20%20%20%20this.hour%20%3D%20hour%3B%0A%20%20%20%20%20%20%20%20this.minute%20%3D%20minute%3B%0A%20%20%20%20%20%20%20%20this.second%20%3D%20second%3B%0A%20%20%20%20%7D%0A%7D" src="./Designing classes _ Think Java _ Trinket_files/saved_resource.html"></iframe><!--
+----{Time.java}----
+public class Time {
+    private int hour;
+    private int minute;
+    private double second;
+
+    public Time() {
+        this.hour = 0;
+        this.minute = 0;
+        this.second = 0.0;
+    }
+
+    public Time(int hour, int minute, double second) {
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
+    }
+}
+--></p>
+<h2 id="sec129" class="section">11.4&nbsp;&nbsp;Getters and setters<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec129" aria-label="Anchor link for: sec129" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>Recall that the instance variables of <code>Time</code> are <code><span style="color:blue">private</span></code>.
+We can access them from within the <code>Time</code> class, but if we try to access them from another class, the compiler reports an error.</p><p><a id="item623"></a>
+<a id="item624"></a></p><p>A class that uses objects defined in another class is called a <span style="font-weight:bold">client</span>.
+For example, here is a new class called <code>TimeClient</code>.</p><p><a id="item625"></a></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public class</span> TimeClient {
+
+    <span style="color:blue">public static void</span> main(String[] args) {
+        Time time = <span style="color:blue">new</span> Time(11, 59, 59.9);
+        System.out.println(time.hour);      <span style="color:#007C00">// compiler error</span>
+    }
+}</td></tr>
+</tbody></table><p>If you try to compile this code, you will get an error message like “hour has private access in Time”.
+There are three ways to solve this problem:</p><ul class="itemize"><li class="li-itemize">We could make the instance variables <code><span style="color:blue">public</span></code>.</li><li class="li-itemize">We could provide methods to access the instance variables.</li><li class="li-itemize">We could decide that it’s not a problem, and refuse to let other classes access the instance variables.</li></ul><p>The first choice is appealing because it’s simple.
+But here is the problem: when Class <span style="font-style:italic">A</span> accesses the instance variables of Class <span style="font-style:italic">B</span> directly, <span style="font-style:italic">A</span> becomes dependent on <span style="font-style:italic">B</span>.
+If anything in <span style="font-style:italic">B</span> changes later, it is likely that <span style="font-style:italic">A</span> will have to change, too.</p><p><a id="item626"></a>
+<a id="item627"></a></p><p>But if <span style="font-style:italic">A</span> only uses methods to interact with <span style="font-style:italic">B</span>, <span style="font-style:italic">A</span> and <span style="font-style:italic">B</span> are less dependent, which means that we can make changes in <span style="font-style:italic">B</span> without affecting <span style="font-style:italic">A</span> (as long as we don’t change the method parameters).</p><p>So if we decide that <code>TimeClient</code> should be able to read the instance variables of <code>Time</code>, we should provide methods to do it:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public int</span> getHour() {
+    <span style="color:blue">return this</span>.hour;
+}
+
+<span style="color:blue">public int</span> getMinute() {
+    <span style="color:blue">return this</span>.minute;
+}
+
+<span style="color:blue">public double</span> getSecond() {
+    <span style="color:blue">return this</span>.second;
+}</td></tr>
+</tbody></table><p><a id="item628"></a>
+<a id="item629"></a>
+<a id="item630"></a>
+<a id="item631"></a></p><p>Methods like these are formally called “accessors”, but more commonly referred to as <span style="font-weight:bold">getters</span>.
+By convention, the method that gets a variable named <code>something</code> is called <code>getSomething</code>.</p><p>If we decide that <code>TimeClient</code> should also be able to modify the instance variables of <code>Time</code>, we can provide methods to do that, too:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public void</span> setHour(<span style="color:blue">int</span> hour) {
+    <span style="color:blue">this</span>.hour = hour;
+}
+
+<span style="color:blue">public void</span> setMinute(<span style="color:blue">int</span> minute) {
+    <span style="color:blue">this</span>.minute = minute;
+}
+
+<span style="color:blue">public void</span> setSecond(<span style="color:blue">double</span> second) {
+    <span style="color:blue">this</span>.second = second;
+}</td></tr>
+</tbody></table><p><a id="item632"></a>
+<a id="item633"></a>
+<a id="item634"></a>
+<a id="item635"></a></p><p>These methods are formally called “mutators”, but more commonly known as <span style="font-weight:bold">setters</span>.
+The naming convention is similar; the method that sets <code>something</code> is usually called <code>setSomething</code>.</p><p>Writing getters and setters can get boring, but many IDEs can generate them for you based on the instance variables.</p>
+<h2 id="sec130" class="section">11.5&nbsp;&nbsp;Displaying objects<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec130" aria-label="Anchor link for: sec130" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>If you create a <code>Time</code> object and display it with <code>println</code>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static void</span> main(String[] args) {
+    Time time = <span style="color:blue">new</span> Time(11, 59, 59.9);
+    System.out.println(time);
+}</td></tr>
+</tbody></table><p><a id="item636"></a>
+<a id="item637"></a>
+<a id="item638"></a></p><p>The output will look something like:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Time@80cc7c0</td></tr>
+</tbody></table><p><a id="item639"></a>
+<a id="item640"></a></p><p>When Java displays the value of an object type, it displays the name of the type and the address of the object (in hexadecimal).
+This address can be useful for debugging, if you want to keep track of individual objects.</p><p>To display <code>Time</code> objects in a way that is more meaningful to users, you could write a method to display the hour, minute, and second.
+Using <code>printTime</code> in Section&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter4.html#stack">4.6</a> as a starting point, we could write:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static void</span> printTime(Time t) {
+    System.out.print(t.hour);
+    System.out.print(<span style="color:#B20000">":"</span>);
+    System.out.print(t.minute);
+    System.out.print(<span style="color:#B20000">":"</span>);
+    System.out.println(t.second);
+}</td></tr>
+</tbody></table><p>The output of this method, given the <code>time</code> object from the first example, would be <span style="font-family:monospace">11:59:59.9</span>.
+We can use <code>printf</code> to make the code more concise:</p><p><a id="item641"></a>
+<a id="item642"></a>
+<a id="item643"></a></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static void</span> printTime(Time t) {
+    System.out.printf(<span style="color:#B20000">"%02d:%02d:%04.1f\n"</span>,
+        t.hour, t.minute, t.second);
+}</td></tr>
+</tbody></table><p>As a reminder, you need to use <code>\%d</code> with integers and <code>\%f</code> with floating-point numbers.
+The <code>02</code> option means “total width 2, with leading zeros if necessary”, and the <code>04.1</code> option means “total width 4, one digit after the decimal point, leading zeros if necessary”.
+The output is the same: <span style="font-family:monospace">11:59:59.9</span>.</p>
+<h2 id="sec131" class="section">11.6&nbsp;&nbsp;The toString method<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec131" aria-label="Anchor link for: sec131" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p><a id="item644"></a>
+<a id="item645"></a></p><p>Every object type has a method called <code>toString</code> that returns a string representation of the object.
+When you display an object using <code>print</code> or <code>println</code>, Java invokes the object’s <code>toString</code> method.</p><p><a id="item646"></a></p><p>By default it simply displays the type of the object and its address, but you can <span style="font-weight:bold">override</span> this behavior by providing your own <code>toString</code> method.
+For example, here is a <code>toString</code> method for <code>Time</code>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> String toString() {
+    <span style="color:blue">return</span> String.format(<span style="color:#B20000">"%02d:%02d:%04.1f\n"</span>,
+        <span style="color:blue">this</span>.hour, <span style="color:blue">this</span>.minute, <span style="color:blue">this</span>.second);
+}</td></tr>
+</tbody></table><p><a id="item647"></a>
+<a id="item648"></a></p><p>The definition does not have the keyword <code><span style="color:blue">static</span></code>, because it is not a static method.
+It is an <span style="font-weight:bold">instance method</span>, so called because when you invoke it, you invoke it on an instance of the class (<code>Time</code> in this case).
+Instance methods are sometimes called “non-static”; you might see this term in an error message.</p><p>The body of the method is similar to <code>printTime</code> in the previous section, with two changes:</p><ul class="itemize"><li class="li-itemize">Inside the method, we use <code><span style="color:blue">this</span></code> to refer to the current instance; that is, the object the method is invoked on.</li><li class="li-itemize">Instead of <code>printf</code>, it uses <code>String.format</code>, which returns a formatted <code>String</code> rather than displaying it.</li></ul><p><a id="item649"></a></p><p>Now you can call <code>toString</code> directly:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Time time = <span style="color:blue">new</span> Time(11, 59, 59.9);
+String s = time.toString();</td></tr>
+</tbody></table><p>Or you can invoke it indirectly through <code>println</code>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">System.out.println(time);</td></tr>
+</tbody></table><p>In this example, <code><span style="color:blue">this</span></code> in <code>toString</code> refers to the same object as <code>time</code>.
+The return value is <span style="color:#B20000"><code>"11:59:59.9"</code></span>.</p>
+<h2 id="sec132" class="section">11.7&nbsp;&nbsp;The equals method<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec132" aria-label="Anchor link for: sec132" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>
+<a id="equals"></a></p><p><a id="item650"></a>
+<a id="item651"></a>
+<a id="item652"></a></p><p>We have seen two ways to check whether values are equal: the <code>==</code> operator and the <code>equals</code> method.
+With objects you can use either one, but they are not the same.</p><ul class="itemize"><li class="li-itemize"><p><a id="item653"></a></p>The <code>==</code> operator checks whether two references are <span style="font-weight:bold">identical</span>; that is, whether they refer to the same object.<p><a id="item654"></a></p></li><li class="li-itemize">The <code>equals</code> method checks whether two objects are <span style="font-weight:bold">equivalent</span>; that is, whether they have the same values.</li></ul><p>The definition of identity is always the same, so the <code>==</code> operator always does the same thing.
+But the definition of equivalence is different for different objects, so objects can define their own <code>equals</code> methods.</p><p>Consider the following variables and the memory diagram in Figure&nbsp;<a href="https://books.trinket.io/thinkjava2/chapter11.html#fig.time2">11.2</a>.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Time time1 = <span style="color:blue">new</span> Time(9, 30, 0.0);
+Time time2 = time1;
+Time time3 = <span style="color:blue">new</span> Time(9, 30, 0.0);</td></tr>
+</tbody></table><p><a id="item655"></a>
+<a id="item656"></a></p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="center">
+<img src="./Designing classes _ Think Java _ Trinket_files/thinkjava7035.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tbody><tr><td style="vertical-align:top;text-align:left;">Figure 11.2: Memory diagram of three <code>Time</code> variables.</td></tr>
+</tbody></table></div>
+<a id="fig.time2"></a>
+</div>
+<div class="center"><hr style="width:80%;height:2"></div></blockquote><p>The assignment operator copies references, so <code>time1</code> and <code>time2</code> refer to the same object.
+Because they are identical, <code>time1&nbsp;==&nbsp;time2</code> is true.
+But <code>time1</code> and <code>time3</code> refer to two different objects.
+Because they are not identical, <code>time1&nbsp;==&nbsp;time3</code> is false.</p><p>By default, the <code>equals</code> method does the same thing as <code>==</code>.
+For <code>Time</code> objects, that’s probably not what we want.
+For example, <code>time1</code> and <code>time3</code> represent the same time of day, so we should consider them equivalent.</p><p><a id="item657"></a>
+<a id="item658"></a></p><p>We can provide an <code>equals</code> method that implements this idea:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public boolean</span> equals(Time that) {
+    <span style="color:blue">return this</span>.hour == that.hour
+        &amp;&amp; <span style="color:blue">this</span>.minute == that.minute
+        &amp;&amp; <span style="color:blue">this</span>.second == that.second;
+}</td></tr>
+</tbody></table><p><code>equals</code> is an instance method, so it doesn’t have the keyword <code><span style="color:blue">static</span></code>.
+It uses <code><span style="color:blue">this</span></code> to refer to current object, and <code>that</code> to refer to the other.
+The parameter named <code>that</code> is not a keyword and could have a different name, but it improves readability.
+We can invoke <code>equals</code> as follows:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">time1.equals(time3);</td></tr>
+</tbody></table><p>Inside the <code>equals</code> method, <code><span style="color:blue">this</span></code> refers to the same object as <code>time1</code>, and <code>that</code> refers to the same object as <code>time3</code>.
+Since their instance variables are equal, the result is <code><span style="color:blue">true</span></code>.</p><p>Many objects have a similar notion of equivalence; that is, two objects are considered equal if their instance variables are equal.
+But other definitions are possible.
+You could, for example, allow a <code>Time</code> object and a <code>String</code> object to be considered equal if they represent the same time.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public boolean</span> equals(String str) {
+    <span style="color:blue">return</span> str.equals(<span style="color:blue">this</span>.toString());
+}</td></tr>
+</tbody></table><p>The <code>equals</code> method is now overloaded.
+If we invoke <code>time1.equals(time3)</code>, the first method will be used; <code>time1.equals(<span style="color:#B20000">"09:30:00.0"</span>)</code> uses the second.</p>
+<h2 id="sec133" class="section">11.8&nbsp;&nbsp;Adding times<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec133" aria-label="Anchor link for: sec133" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>Suppose you are going to a movie that starts at 18:50 (or 6:50 PM), and the running time is 2 hours 16 minutes.
+What time does the movie end?</p><p>We’ll use <code>Time</code> objects to figure it out.</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Time startTime = <span style="color:blue">new</span> Time(18, 50, 0.0);
+Time runningTime = <span style="color:blue">new</span> Time(2, 16, 0.0);</td></tr>
+</tbody></table><p><a id="item659"></a>
+<a id="item660"></a></p><p>Here are two ways we could “add” the <code>Time</code> objects:</p><ul class="itemize"><li class="li-itemize">
+We could write a static method that takes two <code>Time</code> objects as parameters (not object-oriented).
+</li><li class="li-itemize">We could write an instance method that gets invoked on one object and takes the other as a parameter.
+</li></ul><p>To demonstrate the difference, we’ll do both.
+Here is a simple version that uses the static approach:</p><p><a id="item661"></a>
+<a id="item662"></a></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public static</span> Time add(Time t1, Time t2) {
+    Time sum = <span style="color:blue">new</span> Time();
+    sum.hour = t1.hour + t2.hour;
+    sum.minute = t1.minute + t2.minute;
+    sum.second = t1.second + t2.second;
+    <span style="color:blue">return</span> sum;
+}</td></tr>
+</tbody></table><p>And here’s how we would invoke the static method:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Time endTime = Time.add(startTime, runningTime);</td></tr>
+</tbody></table><p>On the other hand, here’s what it looks like as an instance method:</p><p><a id="item663"></a>
+<a id="item664"></a></p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Time add(Time t2) {
+    Time sum = <span style="color:blue">new</span> Time();
+    sum.hour = <span style="color:blue">this</span>.hour + t2.hour;
+    sum.minute = <span style="color:blue">this</span>.minute + t2.minute;
+    sum.second = <span style="color:blue">this</span>.second + t2.second;
+    <span style="color:blue">return</span> sum;
+}</td></tr>
+</tbody></table><p>The changes are:</p><ul class="itemize"><li class="li-itemize">
+We removed the keyword <code><span style="color:blue">static</span></code>.
+</li><li class="li-itemize">We removed the first parameter.
+</li><li class="li-itemize">We replaced <code>t1</code> with <code><span style="color:blue">this</span></code>.
+</li></ul><p>And here’s how we would invoke the instance method:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting">Time endTime = startTime.add(runningTime);</td></tr>
+</tbody></table><p>That’s all there is to it.
+Static methods and instance methods do the same thing, and you can convert from one to the other with just a few changes.</p><p>There’s only one problem: the addition code itself is not correct.
+For this example, it returns <span style="font-family:monospace">20:66</span>, which is not a valid time.
+If <code>second</code> exceeds 59, we have to “carry” into the minutes column, and if <code>minute</code> exceeds 59, we have to carry into <code>hour</code>.
+Here is a better version of <code>add</code>:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public</span> Time add(Time t2) {
+    Time sum = <span style="color:blue">new</span> Time();
+    sum.hour = <span style="color:blue">this</span>.hour + t2.hour;
+    sum.minute = <span style="color:blue">this</span>.minute + t2.minute;
+    sum.second = <span style="color:blue">this</span>.second + t2.second;
+    <span style="color:blue">if</span> (sum.second &gt;= 60.0) {
+        sum.second -= 60.0;
+        sum.minute += 1;
+    }
+    <span style="color:blue">if</span> (sum.minute &gt;= 60) {
+        sum.minute -= 60;
+        sum.hour += 1;
+    }
+    <span style="color:blue">return</span> sum;
+}</td></tr>
+</tbody></table><p>It’s still possible that <code>hour</code> may exceed 23, but there’s no <code>days</code> attribute to carry into.
+In that case, <code>sum.hour&nbsp;-=&nbsp;24</code> would yield the correct result.</p>
+<h2 id="sec134" class="section">11.9&nbsp;&nbsp;Pure methods<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec134" aria-label="Anchor link for: sec134" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>This implementation of <code>add</code> does not modify either of the parameters.
+Instead, it creates and returns a new <code>Time</code> object.
+Alternatively, we could have written a method like this:</p><table class="lstframe" style="padding:1ex;background-color:#FAFAFA;"><tbody><tr><td class="lstlisting"><span style="color:blue">public void</span> increment(<span style="color:blue">double</span> seconds) {
+    <span style="color:blue">this</span>.second += seconds;
+    <span style="color:blue">while</span> (<span style="color:blue">this</span>.second &gt;= 60.0) {
+        <span style="color:blue">this</span>.second -= 60.0;
+        <span style="color:blue">this</span>.minute += 1;
+    }
+    <span style="color:blue">while</span> (<span style="color:blue">this</span>.minute &gt;= 60) {
+        <span style="color:blue">this</span>.minute -= 60;
+        <span style="color:blue">this</span>.hour += 1;
+    }
+}</td></tr>
+</tbody></table><p>The <code>increment</code> method modifies an existing <code>Time</code> object.
+It doesn’t create a new one, and it doesn’t return anything.</p><p><a id="item665"></a>
+<a id="item666"></a></p><p>In contrast, methods like <code>add</code> (in the previous section) are called <span style="font-weight:bold">pure</span> because:</p><ul class="itemize"><li class="li-itemize">
+They don’t modify the parameters.
+</li><li class="li-itemize">They don’t have any other “side effects”, like printing.
+</li><li class="li-itemize">The return value only depends on the parameters, not on any other data.
+</li></ul><p><a id="item667"></a>
+<a id="item668"></a></p><p>Methods like <code>increment</code>, which breaks the first rule, are sometimes called <span style="font-weight:bold">modifiers</span>.
+They are usually void methods, but sometimes they return a reference to the object they modify.</p><p>Modifiers can be more efficient because they don’t create new objects.
+But they can also be error-prone.
+When objects are aliased, the effects of modifiers can be confusing.
+</p><p><a id="item669"></a></p><p>If a class provides only getters and pure methods (no setters or modifiers), then the objects will be immutable.
+Working with immutable objects can be more difficult at first, but they can save you from long hours of debugging.</p>
+<h2 id="sec135" class="section">11.10&nbsp;&nbsp;Vocabulary<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec135" aria-label="Anchor link for: sec135" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<dl class="description"><dt class="dt-description"><span style="font-weight:bold">class:</span></dt><dd class="dd-description"><a id="item670"></a>
+Previously, we defined a class as a collection of related methods.
+Now you know that a class is also a template for a new type of object.</dd><dt class="dt-description"><span style="font-weight:bold">instance:</span></dt><dd class="dd-description"><a id="item671"></a>
+A member of a class.
+Every object is an instance of some class.</dd><dt class="dt-description"><span style="font-weight:bold">instantiate:</span></dt><dd class="dd-description"><a id="item672"></a>
+Create a new instance of a class in the computer’s memory.</dd><dt class="dt-description"><span style="font-weight:bold">instance variable:</span></dt><dd class="dd-description"><a id="item673"></a>
+An attribute of an object; a non-static variable defined at the class level.</dd><dt class="dt-description"><span style="font-weight:bold">information hiding:</span></dt><dd class="dd-description"><a id="item674"></a>
+The practice of making instance variables <code><span style="color:blue">private</span></code> to limit dependencies between classes.</dd><dt class="dt-description"><span style="font-weight:bold">constructor:</span></dt><dd class="dd-description"><a id="item675"></a>
+A special method that initializes the instance variables of a newly-constructed object.</dd><dt class="dt-description"><span style="font-weight:bold">shadow:</span></dt><dd class="dd-description"><a id="item676"></a>
+Defining a local variable or parameter with the same name and type as an instance variable.</dd><dt class="dt-description"><span style="font-weight:bold">client:</span></dt><dd class="dd-description"><a id="item677"></a>
+A class that uses objects defined in another class.</dd><dt class="dt-description"><span style="font-weight:bold">getter:</span></dt><dd class="dd-description"><a id="item678"></a>
+A method that returns the value of an instance variable.</dd><dt class="dt-description"><span style="font-weight:bold">setter:</span></dt><dd class="dd-description"><a id="item679"></a>
+A method that assigns a value to an instance variable.</dd><dt class="dt-description"><span style="font-weight:bold">override:</span></dt><dd class="dd-description"><a id="item680"></a>
+Replacing a default implementation of a method, such as <code>toString</code>.</dd><dt class="dt-description"><span style="font-weight:bold">instance method:</span></dt><dd class="dd-description"><a id="item681"></a>
+A non-static method that has access to <code><span style="color:blue">this</span></code> and the instance variables.</dd><dt class="dt-description"><span style="font-weight:bold">identical:</span></dt><dd class="dd-description"><a id="item682"></a>
+Two values that are the same; in the case of objects, two variables that refer to the same object.</dd><dt class="dt-description"><span style="font-weight:bold">equivalent:</span></dt><dd class="dd-description"><a id="item683"></a>
+Two objects that are “equal” but not necessarily identical, as defined by the <code>equals</code> method.</dd><dt class="dt-description"><span style="font-weight:bold">pure method:</span></dt><dd class="dd-description"><a id="item684"></a>
+A static method that depends only on its parameters and no other data.</dd><dt class="dt-description"><span style="font-weight:bold">modifier method:</span></dt><dd class="dd-description"><a id="item685"></a>
+A method that changes the state (instance variables) of an object.</dd></dl>
+<h2 id="sec136" class="section">11.11&nbsp;&nbsp;Exercises<a class="anchorjs-link " href="https://books.trinket.io/thinkjava2/chapter11.html#sec136" aria-label="Anchor link for: sec136" data-anchorjs-icon="" style="font-family: anchorjs-icons; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1; padding-left: 0.375em;"></a></h2>
+<p>The code for this chapter is in the <span style="font-family:monospace">ch11</span> directory of <span style="font-family:monospace">ThinkJavaCode2</span>.
+See page&nbsp;<a href="https://books.trinket.io/thinkjava2/preface.html#code">??</a> for instructions on how to download the repository.
+Before you start the exercises, we recommend that you compile and run the examples.</p><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;1</span>&nbsp;&nbsp; <p><em>Review the documentation of <code>java.awt.Rectangle</code>.
+Which methods are pure?
+Which are modifiers?</em></p><p><em>If you review the documentation of <code>java.lang.String</code>, you should see that there are no modifiers, because strings are immutable.</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;2</span>&nbsp;&nbsp; <p><em>The implementation of <code>increment</code> in this chapter is not very efficient.
+Can you rewrite it so it doesn’t use any loops?</em></p><p><em><span style="font-style:italic">Hint:</span> Remember the remainder operator. And yes, it works with <span style="color:blue"><code>double</code></span>s too.</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;3</span>&nbsp;&nbsp; <a id="item686"></a><p><em>In the board game Scrabble, each tile contains a letter, which is used to spell words in rows and columns, and a score, which is used to determine the value of words.</em></p><ol class="enumerate" type="1"><li class="li-enumerate"><em>Write a definition for a class named <code>Tile</code> that represents Scrabble tiles.
+The instance variables should include a character named <code>letter</code> and an integer named <code>value</code>.</em></li><li class="li-enumerate"><em>Write a constructor that takes parameters named <code>letter</code> and <code>value</code> and initializes the instance variables.</em></li><li class="li-enumerate"><em>Write a method named <code>printTile</code> that takes a <code>Tile</code> object as a parameter and displays the instance variables in a reader-friendly format.</em></li><li class="li-enumerate"><em>Write a method named <code>testTile</code> that creates a <code>Tile</code> object with the letter <code>Z</code> and the value <code>10</code>, and then uses <code>printTile</code> to display the state of the object.</em></li><li class="li-enumerate"><em>Implement the <code>toString</code> and <code>equals</code> methods for a <code>Tile</code>.</em></li><li class="li-enumerate"><em>Create getters and setters for each of the attributes.</em></li></ol><p><em>The point of this exercise is to practice the mechanical part of creating a new class definition.
+</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;4</span>&nbsp;&nbsp; <p><em>Write a class definition for <code>Date</code>, an object type that contains three integers: <code>year</code>, <code>month</code>, and <code>day</code>.
+This class should provide two constructors.
+The first should take no parameters and initialize a default date.
+The second should take parameters named <code>year</code>, <code>month</code> and <code>day</code>, and use them to initialize the instance variables.</em></p><p><em>Write a <code>main</code> method that creates a new <code>Date</code> object named <code>birthday</code>.
+The new object should contain your birth date.
+You can use either constructor.
+</em></p></div><div class="theorem"><span style="font-weight:bold">Exercise&nbsp;5</span>&nbsp;&nbsp; <p><a id="item687"></a></p><p><em>A rational number is a number that can be represented as the ratio of two integers.
+For example, </em>2/3<em> is a rational number, and you can think of 7 as a rational number with an implicit 1 in the denominator.
+</em></p><ol class="enumerate" type="1"><li class="li-enumerate"><em>Define a class called <code>Rational</code>.
+A <code>Rational</code> object should have two integer instance variables that store the numerator and denominator.</em></li><li class="li-enumerate"><em>Write a constructor that takes no arguments and that sets the numerator to 0 and denominator to 1.</em></li><li class="li-enumerate"><em>Write an instance method called <code>printRational</code> that displays a <code>Rational</code> in some reasonable format.</em></li><li class="li-enumerate"><em>Write a <code>main</code> method that creates a new object with type <code>Rational</code>, sets its instance variables to some values, and displays the object.</em></li><li class="li-enumerate"><em>At this stage, you have a minimal testable program.
+Test it and, if necessary, debug it.</em></li><li class="li-enumerate"><em>Write a <code>toString</code> method for <code>Rational</code> and test it using <code>println</code>.</em></li><li class="li-enumerate"><em>Write a second constructor that takes two arguments and uses them to initialize the instance variables.</em></li><li class="li-enumerate"><em>Write an instance method called <code>negate</code> that reverses the sign of a rational number.
+This method should be a modifier, so it should be void.
+Add lines to <code>main</code> to test the new method.</em></li><li class="li-enumerate"><em>Write an instance method called <code>invert</code> that inverts the number by swapping the numerator and denominator.
+It should be a modifier.
+Add lines to <code>main</code> to test the new method.</em></li><li class="li-enumerate"><em>Write an instance method called <code>toDouble</code> that converts the rational number to a <span style="color:blue"><code>double</code></span> (floating-point number) and returns the result.
+This method is a pure method; it does not modify the object.
+As always, test the new method.</em></li><li class="li-enumerate"><em>Write an instance method named <code>reduce</code> that reduces a rational number to its lowest terms by finding the greatest common divisor (GCD) of the numerator and denominator and dividing through.
+This method should be a pure method; it should not modify the instance variables of the object on which it is invoked.</em><p><em><span style="font-style:italic">Hint:</span> Finding the GCD only takes a few lines of code.
+Search the web for “Euclidean algorithm”.</em></p></li><li class="li-enumerate"><em>Write an instance method called <code>add</code> that takes a <code>Rational</code> number as an argument, adds it to <span style="color:blue"><code>this</code></span>, and returns a new <code>Rational</code> object.</em><p><em>There are several ways to add fractions.
+You can use any one you want, but you should make sure that the result of the operation is reduced so that the numerator and denominator have no common divisor (other than 1).</em></p></li></ol><p><em>The purpose of this exercise is to write a class definition that includes a variety of methods, including constructors, static methods, instance methods, modifiers, and pure methods.</em></p></div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+<div class="bookcopyright">
+  <div class="row">
+    <div class="columns small-12">
+      <div>
+Text © Allen Downey and Chris Mayfield.  Interactive HTML © Trinket.  Both provided
+under a <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC-NC-BY</a> license.  Think Java Second Edition version 6.6.0.
+</div>
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    
+
+  </div> <!-- end main-content-wrapper -->
+
+  
+    
+  
+
+  <div trinket-language=""></div>
+
+  
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    messageStyle : "none",
+    tex2jax      : {
+      inlineMath     : [['$(',')$'], ['\\(','\\)']],
+      ignoreClass    : "mathjax-ignore",
+      processEscapes : true
+    },
+    TeX          : {
+      extensions : ["[siunitx]/siunitx.js"]
+    }
+  });
+  MathJax.Ajax.config.path['siunitx']  = "/cache-prefix-b8de66a3/components/Mathjax-siunitx";
+  </script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/jquery-ui.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/angular-route.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/restangular.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/marked.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/highlight.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/ace.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/foundation.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/flash.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/trinket.js(1).download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/aes.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/roles.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/join-course.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/courses.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/cache.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/gallery.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/debug.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/ng-text-select.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/text-select.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/trinket-share.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/trinket-groups.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/notify.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/angular-aria.min.js.download"></script>
+  
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/angular-file-upload.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/mm-foundation-tpls.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/angular-notifyjs.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/moment.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/moment-timezone-with-data.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/angular-moment.min.js.download"></script>
+  
+    <script src="./Designing classes _ Think Java _ Trinket_files/app.min.js.download"></script>
+  
+
+  
+  <script>$(document).foundation()</script>
+  
+
+  <script>
+      $(document).on('open', '#newTrinketModal', function() {
+        $('.has-dropdown').removeClass('hover');
+      });
+      $('*[data-auth-init]').click(function(event) {
+        event.preventDefault();
+        var href     = $(this).attr('href');
+        var provider = $(this).data('auth-init');
+        ga('send', 'event', provider + ' Auth', 'Started', window.location.pathname, {
+          'hitCallback' : function() {
+            window.location.href = href;
+          }
+        });
+      });
+      
+
+      $.notify.addStyle('foundation', {
+        html : '<div><span data-notify-html></span></div>'
+      });
+      $.notify.defaults({
+          position  : 'bottom center'
+        , arrowShow : false
+        , style     : 'foundation'
+        , gap       : 0
+      });
+  </script>
+  
+<script type="text/javascript" scr="/cache-prefix-b8de66a3/components/foundation/js/foundation/foundation.topbar.js"></script>
+<script src="./Designing classes _ Think Java _ Trinket_files/lazysizes.min.js.download"></script>
+<script src="./Designing classes _ Think Java _ Trinket_files/anchor.min.js.download"></script>
+<script>
+    anchors.add('h2:not(.no-anchor)');
+    anchors.add('.anchor')
+    anchors.remove('.no-anchor');
+</script>
+
+  
+
+
+
+
+  
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 970987464;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<div style="display:none">
+<script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+</div>
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/970987464/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+  
+
+
+  
+<script src="https://platform.twitter.com/oct.js" type="text/javascript" async="true"></script>
+    
+      
+  
+<script type="text/javascript">
+twttr.conversion.trackPid('l4kgy', { tw_sale_amount: 0, tw_order_quantity: 0 });</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4kgy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+<img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4kgy&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" /></noscript>
+  
+
+    
+    
+  
+
+
+<script type="text/javascript">
+$(document).on('click', '.contact-us-link', function(event) {
+  if (typeof(Intercom) !== "undefined") {
+    event.preventDefault();
+    Intercom('showNewMessage');
+  }
+});
+</script>
+
+
+
+
+
+</div></body></html>
