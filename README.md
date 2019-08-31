@@ -15,16 +15,7 @@ Honestly, there is one big problem: Opportunity cost. I find it personally quite
 
 ## Credits
 
-All credits go to @p1xt for developing this high quality software engineer roadmap, and for the constant support when getting stumped at certain parts (especially in Google Code Jam). Besides that, all credits also go towards the authors of the relevant materials, without them, this guide will not exist and it will be immensely difficult to even know where to start.
-
-## My strategy to approaching this guide
-
-- Unless otherwise stated, I will limit myself to spending at most 1 month in any single checklist. 
-- For Google Code Jam checklists, I will limit myself to approximately 12 hours per question before moving on. I believe this is beneficial in teaching me how to actually solve hard problems, however, I do not want to demotivate myself too much and mull over the problem similar to what happened in the past.
-  - I will circle back after finishing the next one for 2 hours per question to see if anything comes into my head. If still nothing, proceed forward. 
-  - If however, I had an idea on how to solve the question, I will attempt to solve it for 6 hours at most. 
-  - Otherwise, I will move on again, and circle back after another checkmark.
-- Not giving up, top to bottom in 3 years
+All credits go to @p1xt for developing this high quality software engineer roadmap, and for the constant support when getting stumped at certain parts (especially in Google Code Jam). Besides that, all credits also go towards the authors of the relevant materials, without them, this guide will not exist and it will be immensely difficult to even know where to start
 
 ## Listing
 
