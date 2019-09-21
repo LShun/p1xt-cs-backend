@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Practice",
+            "request": "launch",
+            "mainClass": "Practice"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - HelloWorldEx",
+            "request": "launch",
+            "mainClass": "HelloWorldEx"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Hello3",
+            "request": "launch",
+            "mainClass": "Hello3"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Goodbye",
+            "request": "launch",
+            "mainClass": "Goodbye"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="resource">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/chapter-6-loops-strings/tests/resource/opentest4j-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/chapter-6-loops-strings/tests/resource/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/chapter-6-loops-strings/tests/resource/junit-platform-commons-1.5.0-RC2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/chapter-6-loops-strings/tests/resource/apiguardian-api-1.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/chapter-6-loops-strings/tests/resource/junit-jupiter-api-5.5.0-RC2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/chapter-6-loops-strings/tests/resource/junit-4.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

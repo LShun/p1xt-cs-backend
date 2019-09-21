@@ -19,16 +19,12 @@ All credits go to @p1xt for developing this high quality software engineer roadm
 
 ## My strategy to approaching this guide
 
-- Unless otherwise stated, I will limit myself to spending at most 1 month in any single checklist. 
-- For Google Code Jam checklists, I will limit myself to approximately 12 hours per question before moving on. I believe this is beneficial in teaching me how to actually solve hard problems, however, I do not want to demotivate myself too much and mull over the problem similar to what happened in the past.
-  - I will circle back after finishing the next one for 2 hours per question to see if anything comes into my head. If still nothing, proceed forward. 
-  - If however, I had an idea on how to solve the question, I will attempt to solve it for 6 hours at most. 
-  - Otherwise, I will move on again, and circle back after another checkmark.
-- Not giving up, top to bottom in 3 years
+- Unless otherwise stated, I will limit myself to spending at most 1 month in any single checklist.
+- For Google Code Jam checklists, I will skip them, and come back later. Many of them are "trick application questions", if you figure out the trick, you solved the problem. So I don't really want to bang my head against the wall, without getting my "bag of tricks" first.
 
 ## Listing
 
-### Computer Science and Backend Development - Java Focus (Direct extract from: [P1XT's CS&BD: Java](https://github.com/P1xt/p1xt-guides/edit/master/cs-java-focus.md)) 
+### Computer Science and Backend Development - Java Focus (Direct extract from: [P1XT's CS&BD: Java](https://github.com/P1xt/p1xt-guides/edit/master/cs-java-focus.md))
 
 If you have any questions, be sure to check the [FAQ]([./faq.md](https://github.com/P1xt/p1xt-guides/blob/master/faq.md)). In fact, before you even start anything, go read the FAQ.
 It has a plethora of hints, tips and answers to help you ensure you get the most out of this guide.
@@ -53,33 +49,19 @@ It has a plethora of hints, tips and answers to help you ensure you get the most
 ## Tier 1 - getting started
 
 * [x] Course: [Introduction to Computer Science - CS50](https://www.edx.org/course/introduction-computer-science-harvardx-cs50x#!)
-* [ ] Project: [Google Code Jam 2008 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
-  * [ ] Q1
-  * [x] Q2
-  * [ ] Q3
 * [x] Article: Read [Project Specification Documents](http://www.pixelearth.net/pages/project-specification) and get in the habit of including every bit of information it details that makes sense for a project in the README.md or other supporting documentation for your projects
 * [x] Course: [Effective Thinking Through Mathematics](https://www.edx.org/course/effective-thinking-through-mathematics-utaustinx-ut-9-01x)
-* [ ] Project: [Google Code Jam 2009 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
-  * [x] Q1
-  * [ ] Q2
-  * [ ] Q3
 * [x] Course: [How to Code: Simple Data](https://www.edx.org/course/how-code-simple-data-ubcx-htc1x)
-* [ ] Project: [Google Code Jam 2010 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
-  * [ ] Skipped due to insufficient time, returning later
 * [x] Book: [Precalculus](http://www.stitz-zeager.com/szprecalculus07042013.pdf)
   * [x] Replaced with TARUC's Precalculus course.
 * [x] Course: [How to Code: Complex Data](https://www.edx.org/course/how-code-complex-data-ubcx-htc2x)
-* [ ] Project: [Google Code Jam 2011 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
   * [ ] Skipped due to insufficient time, returning later
 * [ ] Project: [Google Code Jam 2008 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
   * [ ] Skipped due to insufficient time, returning later
-* [ ] Video Series: [Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
-  * [x] In progress
+* [x] Video Series: [Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
 * [x] Course: [Single Variable Calculus](https://ocw.mit.edu/courses/mathematics/18-01sc-single-variable-calculus-fall-2010/)
   * [x] Replaced with Professor Leonard Calculus 1 videos
-* [ ] Book: [Think Java - How to Think Like a Computer Scientist](http://greenteapress.com/wp/think-java/)
-  * [x] In progress
-* [ ] Project: [Google Code Jam 2009 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
+* [x] Book: [Think Java - How to Think Like a Computer Scientist](http://greenteapress.com/wp/think-java/)
 * [ ] Course: [Software Construction: Data Abstraction](https://www.edx.org/course/software-construction-data-abstraction-ubcx-softconst1x)
 * [ ] Project: [Google Code Jam 2010 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Book: [Introducing Java 8](http://www.oreilly.com/programming/free/introducing-java-8.csp)
@@ -87,6 +69,17 @@ It has a plethora of hints, tips and answers to help you ensure you get the most
 * [ ] Project: [Google Code Jam 2011 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Project: [The Java Tutorials](https://docs.oracle.com/javase/tutorial/index.html) Work through all of the tutorials
 * [ ] Project: [Spring](http://spring.io/guides) Work through each of the Spring.io guides.
+* [ ] Project: [Google Code Jam 2008 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
+  * [ ] Q1
+  * [x] Q2
+  * [ ] Q3
+* [ ] Project: [Google Code Jam 2009 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
+  * [x] Q1
+  * [ ] Q2
+  * [ ] Q3
+* [ ] Project: [Google Code Jam 2010 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
+* [ ] Project: [Google Code Jam 2011 - Qualification Round (language of your choice)](https://code.google.com/codejam/past-contests)
+* [ ] Project: [Google Code Jam 2009 - Round 1A (language of your choice)](https://code.google.com/codejam/past-contests)
 * [ ] Project: Build Something of your choice using what you've learned to this point.
 * [ ] Project: Build Something of your choice using what you've learned to this point.
 * [ ] Project: Build Something of your choice using what you've learned to this point.
