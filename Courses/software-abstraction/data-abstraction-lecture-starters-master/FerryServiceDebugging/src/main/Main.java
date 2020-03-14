@@ -64,7 +64,7 @@ public class Main {
             System.out.println("You have successfully purchased a ticket in " + ticketType
                     + " for the next available sailing to " + destination + ". Thank you for sailing with us!");
         }
-        else if(!enoughBalance) {
+        else {
             System.out.println("You do not have enough balance on your card for this purchase. Please top up your card with at least "
                     + Integer.toString(ticketPrice - passenger.getFerryCard().getBalance())  + " dollars.");
             initiateBuyTicket();
